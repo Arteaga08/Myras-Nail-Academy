@@ -1,0 +1,12 @@
+# Node modules
+node_modules/
+
+# Variables de entorno
+.env
+
+# Producción
+/frontend/dist
+/backend/build
+
+# Varios
+.DS_Store
