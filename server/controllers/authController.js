@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken');
-const asyncHandler = require('../utils/asyncHandler');
-const User = require('../models/User');
-const AdminUser = require('../models/AdminUser');
+import jwt from 'jsonwebtoken';
+import asyncHandler from '../utils/asyncHandler.js';
+import User from '../models/User.js';
+import AdminUser from '../models/AdminUser.js';
 
 const generateToken = (id, role) => {
   return jwt.sign({ id, role }, process.env.JWT_SECRET, {
@@ -77,6 +77,24 @@ const getMe = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Update current student profile
+// @route   PUT /api/auth/me
+// @access  Private
+const updateMe = asyncHandler(async (req, res) => {
+  const allowed = ['firstName', 'lastName', 'bio', 'profilePicture'];
+  const updates = {};
+  allowed.forEach((field) => {
+    if (req.body[field] !== undefined) updates[field] = req.body[field];
+  });
+
+  const user = await User.findByIdAndUpdate(req.user._id, updates, {
+    new: true,
+    runValidators: true,
+  });
+
+  res.status(200).json({ status: 'success', data: user });
+});
+
 // @desc    Login admin
 // @route   POST /api/admin/auth/login
 // @access  Public
@@ -111,4 +129,4 @@ const adminLogin = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = { register, login, getMe, adminLogin };
+export { register, login, getMe, updateMe, adminLogin };

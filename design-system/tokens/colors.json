@@ -1,0 +1,71 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "color": {
+    "rose": {
+      "50":  { "$value": "#FFF5F8", "$type": "color", "$description": "Fondo muy suave, tintes decorativos" },
+      "100": { "$value": "#FFE4EC", "$type": "color", "$description": "Chips, fondos sutiles de secciones" },
+      "200": { "$value": "#FFC2D4", "$type": "color", "$description": "Bordes suaves, hover ligero" },
+      "300": { "$value": "#FF9BB8", "$type": "color", "$description": "Acentos, focus ring en dark mode" },
+      "400": { "$value": "#F06292", "$type": "color", "$description": "Rose principal suave, primary en dark mode" },
+      "500": { "$value": "#E91E63", "$type": "color", "$description": "Primary brand — botones, links, acentos" },
+      "600": { "$value": "#C2185B", "$type": "color", "$description": "Hover de primary, texto de marca sobre fondos claros" },
+      "700": { "$value": "#9A0E47", "$type": "color", "$description": "Pressed, énfasis profundo" },
+      "800": { "$value": "#6B0A32", "$type": "color", "$description": "Texto sobre fondos rosa claros" },
+      "900": { "$value": "#3D051C", "$type": "color", "$description": "Headings dark mode" }
+    },
+    "nude": {
+      "50":  { "$value": "#FDFAF7", "$type": "color", "$description": "Fondo page alternativo cálido" },
+      "100": { "$value": "#F8F1EA", "$type": "color", "$description": "Cards soft, surfaces cálidos" },
+      "200": { "$value": "#EEDFD0", "$type": "color", "$description": "Bordes decorativos nude" },
+      "300": { "$value": "#D9BFA6", "$type": "color", "$description": "Acento nude" },
+      "400": { "$value": "#B8946F", "$type": "color", "$description": "Champagne medio" },
+      "500": { "$value": "#8C6A4A", "$type": "color", "$description": "Champagne profundo" }
+    },
+    "neutral": {
+      "0":   { "$value": "#FFFFFF", "$type": "color" },
+      "50":  { "$value": "#FAFAFA", "$type": "color" },
+      "100": { "$value": "#F4F4F5", "$type": "color" },
+      "200": { "$value": "#E4E4E7", "$type": "color" },
+      "300": { "$value": "#D4D4D8", "$type": "color" },
+      "400": { "$value": "#A1A1AA", "$type": "color" },
+      "500": { "$value": "#71717A", "$type": "color" },
+      "600": { "$value": "#52525B", "$type": "color" },
+      "700": { "$value": "#3F3F46", "$type": "color" },
+      "800": { "$value": "#27272A", "$type": "color" },
+      "900": { "$value": "#18181B", "$type": "color" },
+      "950": { "$value": "#0A0A0B", "$type": "color" }
+    },
+    "success": {
+      "100": { "$value": "#DCFCE7", "$type": "color" },
+      "500": { "$value": "#16A34A", "$type": "color" },
+      "700": { "$value": "#15803D", "$type": "color" }
+    },
+    "warning": {
+      "100": { "$value": "#FEF3C7", "$type": "color" },
+      "500": { "$value": "#F59E0B", "$type": "color" },
+      "700": { "$value": "#B45309", "$type": "color" }
+    },
+    "error": {
+      "100": { "$value": "#FEE2E2", "$type": "color" },
+      "500": { "$value": "#DC2626", "$type": "color" },
+      "600": { "$value": "#B91C1C", "$type": "color" },
+      "700": { "$value": "#991B1B", "$type": "color" }
+    },
+    "info": {
+      "100": { "$value": "#DBEAFE", "$type": "color" },
+      "500": { "$value": "#2563EB", "$type": "color" },
+      "700": { "$value": "#1D4ED8", "$type": "color" }
+    },
+    "gold": {
+      "400": { "$value": "#E6C068", "$type": "color", "$description": "Acento premium / nail art metálico" },
+      "500": { "$value": "#C9A24C", "$type": "color" }
+    }
+  },
+  "shadow": {
+    "xs": { "$value": "0 1px 2px rgba(233, 30, 99, 0.04)", "$type": "shadow" },
+    "sm": { "$value": "0 1px 3px rgba(24, 24, 27, 0.08), 0 1px 2px rgba(24, 24, 27, 0.04)", "$type": "shadow" },
+    "md": { "$value": "0 4px 12px rgba(24, 24, 27, 0.08)", "$type": "shadow" },
+    "lg": { "$value": "0 12px 24px rgba(233, 30, 99, 0.12)", "$type": "shadow" },
+    "xl": { "$value": "0 24px 48px rgba(24, 24, 27, 0.16)", "$type": "shadow" }
+  }
+}

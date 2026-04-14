@@ -1,10 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-const morgan = require('morgan');
-const corsOptions = require('./config/corsOptions');
-const { sanitizeNoSQL, sanitizeXSS } = require('./middleware/mongoSanitizeMiddleware');
-const { notFound, errorHandler } = require('./middleware/errorMiddleware');
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import rateLimit from 'express-rate-limit';
+import corsOptions from './config/corsOptions.js';
+import { sanitizeNoSQL, sanitizeXSS } from './middleware/mongoSanitizeMiddleware.js';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 const app = express();
 
@@ -13,6 +14,49 @@ app.set('trust proxy', 1);
 
 // Security headers
 app.use(helmet());
+
+// Rate limiting — layered protection
+const commonLimiterOpts = { standardHeaders: true, legacyHeaders: false };
+
+// General limiter — protects entire API from abuse
+const generalLimiter = rateLimit({
+  ...commonLimiterOpts,
+  windowMs: 60 * 1000, // 1 minute
+  max: 100,
+  message: { success: false, message: 'Demasiadas peticiones. Intenta de nuevo en 1 minuto.' },
+});
+
+// Strict limiter for auth (brute force protection)
+const authLimiter = rateLimit({
+  ...commonLimiterOpts,
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: { success: false, message: 'Demasiados intentos de autenticación. Intenta de nuevo en 15 minutos.' },
+});
+
+// Payment creation limiter (prevents PaymentIntent spam)
+const orderLimiter = rateLimit({
+  ...commonLimiterOpts,
+  windowMs: 5 * 60 * 1000,
+  max: 5,
+  message: { success: false, message: 'Demasiados intentos de compra. Espera unos minutos.' },
+});
+
+// Review creation limiter
+const reviewLimiter = rateLimit({
+  ...commonLimiterOpts,
+  windowMs: 10 * 60 * 1000,
+  max: 5,
+  message: { success: false, message: 'Demasiadas reseñas. Intenta de nuevo más tarde.' },
+});
+
+// Apply limiters (specific routes first — Express matches in order)
+app.use('/api/auth/login', authLimiter);
+app.use('/api/auth/register', authLimiter);
+app.use('/api/admin/auth/login', authLimiter);
+app.use('/api/orders', orderLimiter);
+app.use('/api/reviews', reviewLimiter);
+app.use('/api', generalLimiter);
 
 // CORS — whitelist only
 app.use(cors(corsOptions));
@@ -39,18 +83,18 @@ app.get('/api/health', (req, res) => {
 });
 
 // Routes
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/admin/auth', require('./routes/adminAuthRoutes'));
-// app.use('/api/users', require('./routes/userRoutes'));
-// app.use('/api/courses', require('./routes/courseRoutes'));
-// app.use('/api/enrollments', require('./routes/enrollmentRoutes'));
-// app.use('/api/orders', require('./routes/orderRoutes'));
-// app.use('/api/reviews', require('./routes/reviewRoutes'));
-// app.use('/api/webhooks', require('./routes/webhookRoutes'));
-// app.use('/api/admin', require('./routes/adminRoutes'));
+app.use('/api/auth', (await import('./routes/authRoutes.js')).default);
+app.use('/api/categories', (await import('./routes/categoryRoutes.js')).default);
+app.use('/api/courses', (await import('./routes/courseRoutes.js')).default);
+app.use('/api/enrollments', (await import('./routes/enrollmentRoutes.js')).default);
+app.use('/api/orders', (await import('./routes/orderRoutes.js')).default);
+app.use('/api/reviews', (await import('./routes/reviewRoutes.js')).default);
+app.use('/api/webhooks', (await import('./routes/webhookRoutes.js')).default);
+app.use('/api/admin/auth', (await import('./routes/adminAuthRoutes.js')).default);
+app.use('/api/admin', (await import('./routes/adminRoutes.js')).default);
 
 // Error handling (must be last)
 app.use(notFound);
 app.use(errorHandler);
 
-module.exports = app;
+export default app;

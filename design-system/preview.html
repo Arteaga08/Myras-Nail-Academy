@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Myra's Nail Academy — Design System Preview</title>
+<style>
+  /* =========================================================
+     PRIMITIVES (from tokens/colors.json)
+     ========================================================= */
+  :root {
+    /* Rose */
+    --rose-50:#FFF5F8; --rose-100:#FFE4EC; --rose-200:#FFC2D4; --rose-300:#FF9BB8;
+    --rose-400:#F06292; --rose-500:#E91E63; --rose-600:#C2185B; --rose-700:#9A0E47;
+    --rose-800:#6B0A32; --rose-900:#3D051C;
+    /* Nude */
+    --nude-50:#FDFAF7; --nude-100:#F8F1EA; --nude-200:#EEDFD0;
+    --nude-300:#D9BFA6; --nude-400:#B8946F; --nude-500:#8C6A4A;
+    /* Neutral */
+    --n-0:#FFFFFF; --n-50:#FAFAFA; --n-100:#F4F4F5; --n-200:#E4E4E7;
+    --n-300:#D4D4D8; --n-400:#A1A1AA; --n-500:#71717A; --n-600:#52525B;
+    --n-700:#3F3F46; --n-800:#27272A; --n-900:#18181B; --n-950:#0A0A0B;
+    /* States */
+    --success-100:#DCFCE7; --success-500:#16A34A;
+    --warning-100:#FEF3C7; --warning-500:#F59E0B;
+    --error-100:#FEE2E2;   --error-500:#DC2626; --error-600:#B91C1C; --error-700:#991B1B;
+    --info-100:#DBEAFE;    --info-500:#2563EB;
+    --gold-400:#E6C068; --gold-500:#C9A24C;
+
+    /* Shadows */
+    --shadow-xs: 0 1px 2px rgba(233, 30, 99, 0.04);
+    --shadow-sm: 0 1px 3px rgba(24, 24, 27, 0.08), 0 1px 2px rgba(24, 24, 27, 0.04);
+    --shadow-md: 0 4px 12px rgba(24, 24, 27, 0.08);
+    --shadow-lg: 0 12px 24px rgba(233, 30, 99, 0.12);
+
+    /* ===== SEMANTIC (light — default) ===== */
+    --bg:            var(--n-0);
+    --bg-subtle:     var(--nude-50);
+    --bg-muted:      var(--n-100);
+    --surface:       var(--n-0);
+    --surface-raised:var(--n-0);
+    --surface-sunken:var(--nude-100);
+
+    --text-primary:  var(--n-900);
+    --text-secondary:var(--n-600);
+    --text-muted:    var(--n-500);
+    --text-disabled: var(--n-400);
+    --text-brand:    var(--rose-600);
+    --text-on-brand: var(--n-0);
+
+    --border-default:var(--n-200);
+    --border-subtle: var(--n-100);
+    --border-strong: var(--n-300);
+    --border-brand:  var(--rose-400);
+    --border-focus:  var(--info-500);
+
+    /* Button primary */
+    --btn-primary-bg:         var(--rose-500);
+    --btn-primary-bg-hover:   var(--rose-600);
+    --btn-primary-bg-pressed: var(--rose-700);
+    --btn-primary-bg-disabled:var(--n-200);
+    --btn-primary-text:       var(--n-0);
+    --btn-primary-text-disabled: var(--n-400);
+    --btn-focus-ring: var(--info-500);
+
+    /* Button secondary */
+    --btn-secondary-text:        var(--rose-600);
+    --btn-secondary-text-hover:  var(--rose-700);
+    --btn-secondary-text-pressed:var(--rose-800);
+    --btn-secondary-border:      var(--rose-400);
+    --btn-secondary-border-hover:var(--rose-500);
+    --btn-secondary-bg-hover:    var(--rose-50);
+    --btn-secondary-bg-pressed:  var(--rose-100);
+
+    /* Destructive */
+    --btn-destructive-bg:         var(--error-500);
+    --btn-destructive-bg-hover:   var(--error-600);
+    --btn-destructive-bg-pressed: var(--error-700);
+
+    /* Labels / inputs */
+    --label-text:        var(--n-700);
+    --label-text-focus:  var(--rose-600);
+    --label-text-error:  var(--error-500);
+    --label-text-success:var(--success-500);
+    --helper-text:       var(--n-500);
+    --input-border:      var(--n-300);
+    --input-border-focus:var(--rose-500);
+    --input-bg:          var(--n-0);
+    --input-bg-disabled: var(--n-100);
+    --input-ring-focus:  rgba(233,30,99,0.2);
+
+    /* Cards */
+    --card-bg:          var(--n-0);
+    --card-border:      var(--n-200);
+    --card-soft-bg:     var(--nude-50);
+    --card-soft-border: var(--nude-200);
+    --card-brand-bg:    var(--rose-50);
+    --card-brand-border:var(--rose-200);
+    --card-selected-bg:     var(--rose-50);
+    --card-selected-border: var(--rose-500);
+    --card-disabled-bg:     var(--n-100);
+  }
+
+  /* ===== SEMANTIC (dark) ===== */
+  [data-theme="dark"] {
+    --bg:            var(--n-950);
+    --bg-subtle:     var(--n-900);
+    --bg-muted:      var(--n-800);
+    --surface:       var(--n-900);
+    --surface-raised:var(--n-800);
+    --surface-sunken:var(--n-950);
+
+    --text-primary:  var(--n-50);
+    --text-secondary:var(--n-300);
+    --text-muted:    var(--n-400);
+    --text-disabled: var(--n-600);
+    --text-brand:    var(--rose-300);
+    --text-on-brand: var(--n-950);
+
+    --border-default:var(--n-700);
+    --border-subtle: var(--n-800);
+    --border-strong: var(--n-600);
+    --border-brand:  var(--rose-400);
+    --border-focus:  var(--rose-300);
+
+    --btn-primary-bg:         var(--rose-400);
+    --btn-primary-bg-hover:   var(--rose-300);
+    --btn-primary-bg-pressed: var(--rose-500);
+    --btn-primary-bg-disabled:var(--n-800);
+    --btn-primary-text:       var(--n-950);
+    --btn-primary-text-disabled: var(--n-600);
+    --btn-focus-ring: var(--rose-200, #FFC2D4);
+
+    --btn-secondary-text:        var(--rose-300);
+    --btn-secondary-text-hover:  var(--rose-200);
+    --btn-secondary-text-pressed:var(--rose-100);
+    --btn-secondary-border:      var(--rose-400);
+    --btn-secondary-border-hover:var(--rose-300);
+    --btn-secondary-bg-hover:    rgba(240,98,146,0.10);
+    --btn-secondary-bg-pressed:  rgba(240,98,146,0.20);
+
+    --label-text:        var(--n-300);
+    --label-text-focus:  var(--rose-300);
+    --label-text-error:  #FCA5A5;
+    --label-text-success:#86EFAC;
+    --helper-text:       var(--n-400);
+    --input-border:      var(--n-700);
+    --input-border-focus:var(--rose-400);
+    --input-bg:          var(--n-900);
+    --input-bg-disabled: var(--n-950);
+    --input-ring-focus:  rgba(240,98,146,0.3);
+
+    --card-bg:          var(--n-900);
+    --card-border:      var(--n-700);
+    --card-soft-bg:     var(--n-900);
+    --card-soft-border: var(--n-800);
+    --card-brand-bg:    rgba(233,30,99,0.12);
+    --card-brand-border:rgba(240,98,146,0.3);
+    --card-selected-bg:     rgba(233,30,99,0.12);
+    --card-selected-border: var(--rose-400);
+    --card-disabled-bg:     var(--n-950);
+
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+    --shadow-lg: 0 12px 24px rgba(0,0,0,0.6);
+  }
+
+  /* =========================================================
+     LAYOUT
+     ========================================================= */
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    transition: background 0.25s, color 0.25s;
+    line-height: 1.55;
+  }
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-default);
+    padding: 16px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(8px);
+  }
+  header h1 { font-size: 20px; margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+  header h1 span { color: var(--text-brand); }
+  main { max-width: 1200px; margin: 0 auto; padding: 32px; }
+  section { margin-bottom: 56px; }
+  h2 {
+    font-size: 22px; margin: 0 0 8px; font-weight: 700; letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+  h3 { font-size: 15px; margin: 24px 0 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+  .section-desc { color: var(--text-muted); margin: 0 0 20px; font-size: 14px; }
+
+  /* Theme toggle */
+  .theme-toggle {
+    background: var(--btn-primary-bg); color: var(--btn-primary-text);
+    border: none; padding: 10px 18px; border-radius: 999px; cursor: pointer;
+    font-weight: 600; font-size: 14px; box-shadow: var(--shadow-sm);
+    transition: background 0.2s, transform 0.1s;
+  }
+  .theme-toggle:hover { background: var(--btn-primary-bg-hover); }
+  .theme-toggle:active { transform: scale(0.97); }
+
+  /* Swatches */
+  .swatch-group { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .swatch {
+    border-radius: 12px; overflow: hidden; border: 1px solid var(--border-default);
+    background: var(--surface); box-shadow: var(--shadow-sm);
+  }
+  .swatch .color { height: 64px; }
+  .swatch .meta { padding: 10px 12px; font-size: 12px; }
+  .swatch .name { font-weight: 600; color: var(--text-primary); }
+  .swatch .hex { color: var(--text-muted); font-family: "SF Mono", Menlo, monospace; font-size: 11px; }
+
+  /* Buttons showcase */
+  .btn-row {
+    display: grid; grid-template-columns: 100px repeat(6, 1fr); gap: 12px; align-items: center;
+    padding: 14px 0; border-bottom: 1px dashed var(--border-subtle);
+  }
+  .btn-row:last-child { border-bottom: none; }
+  .btn-row .variant-label { font-weight: 600; color: var(--text-secondary); font-size: 13px; }
+  .state-label { text-align: center; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; padding: 8px 0; }
+
+  /* Base button */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: 14px;
+    font-family: inherit; border: none; cursor: pointer;
+    transition: background 0.15s, color 0.15s, transform 0.08s, box-shadow 0.15s;
+    white-space: nowrap; outline: none;
+    width: 100%;
+  }
+
+  /* Primary */
+  .btn-primary              { background: var(--btn-primary-bg); color: var(--btn-primary-text); box-shadow: var(--shadow-sm); }
+  .btn-primary.hover        { background: var(--btn-primary-bg-hover); box-shadow: var(--shadow-md); }
+  .btn-primary.focus        { background: var(--btn-primary-bg); box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--btn-focus-ring); }
+  .btn-primary.pressed      { background: var(--btn-primary-bg-pressed); transform: scale(0.98); box-shadow: var(--shadow-xs); }
+  .btn-primary.disabled     { background: var(--btn-primary-bg-disabled); color: var(--btn-primary-text-disabled); cursor: not-allowed; box-shadow: none; }
+  .btn-primary.loading      { background: var(--btn-primary-bg); color: rgba(255,255,255,0.7); pointer-events: none; }
+
+  /* Secondary */
+  .btn-secondary            { background: transparent; color: var(--btn-secondary-text); border: 1.5px solid var(--btn-secondary-border); }
+  .btn-secondary.hover      { background: var(--btn-secondary-bg-hover); color: var(--btn-secondary-text-hover); border-color: var(--btn-secondary-border-hover); }
+  .btn-secondary.focus      { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--btn-focus-ring); }
+  .btn-secondary.pressed    { background: var(--btn-secondary-bg-pressed); color: var(--btn-secondary-text-pressed); border-color: var(--rose-600); }
+  .btn-secondary.disabled   { color: var(--text-disabled); border-color: var(--border-default); cursor: not-allowed; }
+  .btn-secondary.loading    { opacity: 0.7; pointer-events: none; }
+
+  /* Ghost */
+  .btn-ghost                { background: transparent; color: var(--btn-secondary-text); border: 1.5px solid transparent; }
+  .btn-ghost.hover          { background: var(--btn-secondary-bg-hover); color: var(--btn-secondary-text-hover); }
+  .btn-ghost.focus          { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--btn-focus-ring); }
+  .btn-ghost.pressed        { background: var(--btn-secondary-bg-pressed); color: var(--btn-secondary-text-pressed); }
+  .btn-ghost.disabled       { color: var(--text-disabled); cursor: not-allowed; }
+  .btn-ghost.loading        { color: rgba(194,24,91,0.7); pointer-events: none; }
+
+  /* Destructive */
+  .btn-destructive          { background: var(--btn-destructive-bg); color: #FFF; box-shadow: var(--shadow-sm); }
+  .btn-destructive.hover    { background: var(--btn-destructive-bg-hover); box-shadow: var(--shadow-md); }
+  .btn-destructive.focus    { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--btn-focus-ring); }
+  .btn-destructive.pressed  { background: var(--btn-destructive-bg-pressed); transform: scale(0.98); }
+  .btn-destructive.disabled { background: var(--btn-primary-bg-disabled); color: var(--btn-primary-text-disabled); cursor: not-allowed; box-shadow: none; }
+  .btn-destructive.loading  { color: rgba(255,255,255,0.7); pointer-events: none; }
+
+  /* Spinner */
+  .spinner { width: 14px; height: 14px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin 0.7s linear infinite; opacity: 1; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Labels / inputs */
+  .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .field label { font-size: 13px; font-weight: 600; color: var(--label-text); }
+  .field .required { color: var(--rose-500); }
+  .field input {
+    padding: 10px 14px; border-radius: 8px; font-size: 14px; font-family: inherit;
+    border: 1.5px solid var(--input-border); background: var(--input-bg); color: var(--text-primary);
+    outline: none; transition: border 0.15s, box-shadow 0.15s;
+  }
+  .field .helper { font-size: 12px; color: var(--helper-text); }
+
+  .field.focus label  { color: var(--label-text-focus); }
+  .field.focus input  { border-color: var(--input-border-focus); box-shadow: 0 0 0 3px var(--input-ring-focus); }
+  .field.error label  { color: var(--label-text-error); }
+  .field.error .helper{ color: var(--label-text-error); }
+  .field.error input  { border-color: var(--error-500); background: var(--error-100); }
+  .field.success label { color: var(--label-text-success); }
+  .field.success .helper { color: var(--label-text-success); }
+  .field.success input { border-color: var(--success-500); }
+  .field.disabled label { color: var(--text-disabled); }
+  .field.disabled input { background: var(--input-bg-disabled); border-color: var(--border-default); color: var(--text-disabled); cursor: not-allowed; }
+
+  .fields-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+
+  /* Cards */
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .card {
+    padding: 20px; border-radius: 14px;
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s;
+  }
+  .card h4 { margin: 0 0 6px; font-size: 15px; font-weight: 700; color: var(--text-primary); }
+  .card p  { margin: 0; font-size: 13px; color: var(--text-secondary); }
+  .card .tag { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-brand); margin-bottom: 8px; }
+
+  .card.elevated    { box-shadow: var(--shadow-md); border-color: transparent; }
+  .card.soft        { background: var(--card-soft-bg); border-color: var(--card-soft-border); box-shadow: none; }
+  .card.brand       { background: var(--card-brand-bg); border-color: var(--card-brand-border); box-shadow: none; }
+  .card.interactive { cursor: pointer; }
+  .card.interactive:hover { background: var(--nude-50); border-color: var(--rose-300); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  [data-theme="dark"] .card.interactive:hover { background: var(--n-800); border-color: var(--rose-400); }
+  .card.selected { background: var(--card-selected-bg); border: 2px solid var(--card-selected-border); padding: 19px; }
+  .card.disabled { background: var(--card-disabled-bg); opacity: 0.6; box-shadow: none; }
+
+  footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 12px; border-top: 1px solid var(--border-subtle); margin-top: 40px; }
+</style>
+</head>
+<body data-theme="light">
+
+<header>
+  <h1>Myra's <span>Nail Academy</span> · Design System</h1>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark mode</button>
+</header>
+
+<main>
+
+  <!-- ========================= PALETA ========================= -->
+  <section>
+    <h2>1. Paleta Base</h2>
+    <p class="section-desc">Primitivos — escalas numéricas por familia. No consumir directamente en componentes; usar siempre los semánticos.</p>
+
+    <h3>Rosa (marca)</h3>
+    <div class="swatch-group" id="rose-swatches"></div>
+
+    <h3>Nude / Champagne</h3>
+    <div class="swatch-group" id="nude-swatches"></div>
+
+    <h3>Neutros</h3>
+    <div class="swatch-group" id="neutral-swatches"></div>
+
+    <h3>Estados</h3>
+    <div class="swatch-group" id="state-swatches"></div>
+
+    <h3>Dorado (acento nail art)</h3>
+    <div class="swatch-group" id="gold-swatches"></div>
+  </section>
+
+  <!-- ========================= BOTONES ========================= -->
+  <section>
+    <h2>2. Botones — 6 Estados</h2>
+    <p class="section-desc">Cada variante tiene los 6 estados requeridos: Default, Hover, Focus, Pressed, Disabled, Loading. Los estados de interacción reales (hover/focus/pressed) se muestran también congelados para referencia.</p>
+
+    <div class="btn-row">
+      <div class="variant-label"></div>
+      <div class="state-label">Default</div>
+      <div class="state-label">Hover</div>
+      <div class="state-label">Focus</div>
+      <div class="state-label">Pressed</div>
+      <div class="state-label">Disabled</div>
+      <div class="state-label">Loading</div>
+    </div>
+
+    <div class="btn-row">
+      <div class="variant-label">Primary</div>
+      <button class="btn btn-primary">Enrolar</button>
+      <button class="btn btn-primary hover">Enrolar</button>
+      <button class="btn btn-primary focus">Enrolar</button>
+      <button class="btn btn-primary pressed">Enrolar</button>
+      <button class="btn btn-primary disabled" disabled>Enrolar</button>
+      <button class="btn btn-primary loading"><span class="spinner"></span>Enrolando</button>
+    </div>
+
+    <div class="btn-row">
+      <div class="variant-label">Secondary</div>
+      <button class="btn btn-secondary">Ver curso</button>
+      <button class="btn btn-secondary hover">Ver curso</button>
+      <button class="btn btn-secondary focus">Ver curso</button>
+      <button class="btn btn-secondary pressed">Ver curso</button>
+      <button class="btn btn-secondary disabled" disabled>Ver curso</button>
+      <button class="btn btn-secondary loading"><span class="spinner"></span>Cargando</button>
+    </div>
+
+    <div class="btn-row">
+      <div class="variant-label">Ghost</div>
+      <button class="btn btn-ghost">Cancelar</button>
+      <button class="btn btn-ghost hover">Cancelar</button>
+      <button class="btn btn-ghost focus">Cancelar</button>
+      <button class="btn btn-ghost pressed">Cancelar</button>
+      <button class="btn btn-ghost disabled" disabled>Cancelar</button>
+      <button class="btn btn-ghost loading"><span class="spinner"></span>Espera</button>
+    </div>
+
+    <div class="btn-row">
+      <div class="variant-label">Destructive</div>
+      <button class="btn btn-destructive">Eliminar</button>
+      <button class="btn btn-destructive hover">Eliminar</button>
+      <button class="btn btn-destructive focus">Eliminar</button>
+      <button class="btn btn-destructive pressed">Eliminar</button>
+      <button class="btn btn-destructive disabled" disabled>Eliminar</button>
+      <button class="btn btn-destructive loading"><span class="spinner"></span>Eliminando</button>
+    </div>
+  </section>
+
+  <!-- ========================= LABELS ========================= -->
+  <section>
+    <h2>3. Labels & Inputs</h2>
+    <p class="section-desc">Estados de formulario: default, focus, filled, error, success, disabled. El asterisco de required usa rose-500.</p>
+
+    <div class="fields-grid">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" placeholder="nombre@correo.com" />
+        <span class="helper">Estado: default</span>
+      </div>
+      <div class="field focus">
+        <label>Email</label>
+        <input type="email" value="manuel@" />
+        <span class="helper">Estado: focus (simulado)</span>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" value="maria.lopez@myra.com" />
+        <span class="helper">Estado: filled</span>
+      </div>
+      <div class="field error">
+        <label>Email <span class="required">*</span></label>
+        <input type="email" value="email-invalido" />
+        <span class="helper">Email no válido</span>
+      </div>
+      <div class="field success">
+        <label>Email</label>
+        <input type="email" value="maria@myra.com" />
+        <span class="helper">¡Perfecto!</span>
+      </div>
+      <div class="field disabled">
+        <label>Email</label>
+        <input type="email" value="bloqueado@myra.com" disabled />
+        <span class="helper">Este campo está bloqueado</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= CARDS ========================= -->
+  <section>
+    <h2>4. Cards</h2>
+    <p class="section-desc">7 variantes para distintos contextos de superficie y jerarquía.</p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <span class="tag">Default</span>
+        <h4>Curso básico</h4>
+        <p>Manicure y preparación de uñas. Para principiantes.</p>
+      </div>
+      <div class="card elevated">
+        <span class="tag">Elevated</span>
+        <h4>Curso destacado</h4>
+        <p>Nail art avanzado con gel y efectos.</p>
+      </div>
+      <div class="card soft">
+        <span class="tag">Soft</span>
+        <h4>Contenido cálido</h4>
+        <p>Fondo nude para secciones decorativas.</p>
+      </div>
+      <div class="card brand">
+        <span class="tag">Brand</span>
+        <h4>Promoción especial</h4>
+        <p>-20% en el curso premium esta semana.</p>
+      </div>
+      <div class="card interactive">
+        <span class="tag">Interactive</span>
+        <h4>Pasa el cursor</h4>
+        <p>Click para ver detalles del curso.</p>
+      </div>
+      <div class="card selected">
+        <span class="tag">Selected</span>
+        <h4>Plan Premium</h4>
+        <p>Seleccionado actualmente.</p>
+      </div>
+      <div class="card disabled">
+        <span class="tag">Disabled</span>
+        <h4>Curso cerrado</h4>
+        <p>Inscripciones cerradas por ahora.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= TIPOGRAFÍA BÁSICA ========================= -->
+  <section>
+    <h2>5. Colores de texto</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <h4 style="color: var(--text-primary)">Text primary</h4>
+        <p style="color: var(--text-secondary)">Text secondary — descripción estándar.</p>
+        <p style="color: var(--text-muted); font-size:12px; margin-top:8px;">Text muted — metadatos.</p>
+        <p style="color: var(--text-brand); font-weight:600; margin-top:8px;">Text brand — enlaces / acentos.</p>
+        <p style="color: var(--text-disabled); margin-top:8px;">Text disabled — elementos inactivos.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Myra's Nail Academy Design System v1.0 — inspirado en Katjes, adaptado para nail academy.<br />
+  Tokens en <code>design-system/tokens/</code> · Documentación en <code>DESIGN_SYSTEM.md</code>
+</footer>
+
+<script>
+  // =========== Theme toggle ===========
+  function toggleTheme() {
+    const body = document.body;
+    const isDark = body.getAttribute('data-theme') === 'dark';
+    body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.querySelector('.theme-toggle').textContent = isDark ? '🌙 Dark mode' : '☀️ Light mode';
+  }
+
+  // =========== Swatch rendering ===========
+  const rose = [
+    ['rose-50','#FFF5F8'],['rose-100','#FFE4EC'],['rose-200','#FFC2D4'],['rose-300','#FF9BB8'],
+    ['rose-400','#F06292'],['rose-500','#E91E63'],['rose-600','#C2185B'],['rose-700','#9A0E47'],
+    ['rose-800','#6B0A32'],['rose-900','#3D051C']
+  ];
+  const nude = [
+    ['nude-50','#FDFAF7'],['nude-100','#F8F1EA'],['nude-200','#EEDFD0'],
+    ['nude-300','#D9BFA6'],['nude-400','#B8946F'],['nude-500','#8C6A4A']
+  ];
+  const neutrals = [
+    ['neutral-0','#FFFFFF'],['neutral-50','#FAFAFA'],['neutral-100','#F4F4F5'],['neutral-200','#E4E4E7'],
+    ['neutral-300','#D4D4D8'],['neutral-400','#A1A1AA'],['neutral-500','#71717A'],['neutral-600','#52525B'],
+    ['neutral-700','#3F3F46'],['neutral-800','#27272A'],['neutral-900','#18181B'],['neutral-950','#0A0A0B']
+  ];
+  const states = [
+    ['success-100','#DCFCE7'],['success-500','#16A34A'],
+    ['warning-100','#FEF3C7'],['warning-500','#F59E0B'],
+    ['error-100','#FEE2E2'],  ['error-500','#DC2626'],
+    ['info-100','#DBEAFE'],   ['info-500','#2563EB']
+  ];
+  const gold = [['gold-400','#E6C068'],['gold-500','#C9A24C']];
+
+  function renderSwatches(id, list) {
+    document.getElementById(id).innerHTML = list.map(([name, hex]) => `
+      <div class="swatch">
+        <div class="color" style="background:${hex}"></div>
+        <div class="meta">
+          <div class="name">${name}</div>
+          <div class="hex">${hex}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+  renderSwatches('rose-swatches', rose);
+  renderSwatches('nude-swatches', nude);
+  renderSwatches('neutral-swatches', neutrals);
+  renderSwatches('state-swatches', states);
+  renderSwatches('gold-swatches', gold);
+</script>
+</body>
+</html>

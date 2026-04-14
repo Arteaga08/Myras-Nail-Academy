@@ -1,0 +1,90 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "mode": "light",
+  "semantic": {
+    "background": {
+      "default":   { "$value": "{color.neutral.0}",   "resolved": "#FFFFFF" },
+      "subtle":    { "$value": "{color.nude.50}",     "resolved": "#FDFAF7" },
+      "muted":     { "$value": "{color.neutral.100}", "resolved": "#F4F4F5" },
+      "brand":     { "$value": "{color.rose.50}",     "resolved": "#FFF5F8" }
+    },
+    "surface": {
+      "default":   { "$value": "{color.neutral.0}",   "resolved": "#FFFFFF" },
+      "raised":    { "$value": "{color.neutral.0}",   "resolved": "#FFFFFF", "shadow": "{shadow.md}" },
+      "sunken":    { "$value": "{color.nude.100}",    "resolved": "#F8F1EA" },
+      "overlay":   { "$value": "rgba(24, 24, 27, 0.5)" }
+    },
+    "text": {
+      "primary":     { "$value": "{color.neutral.900}", "resolved": "#18181B" },
+      "secondary":   { "$value": "{color.neutral.600}", "resolved": "#52525B" },
+      "muted":       { "$value": "{color.neutral.500}", "resolved": "#71717A" },
+      "disabled":    { "$value": "{color.neutral.400}", "resolved": "#A1A1AA" },
+      "on-primary":  { "$value": "{color.neutral.0}",   "resolved": "#FFFFFF" },
+      "brand":       { "$value": "{color.rose.600}",    "resolved": "#C2185B" },
+      "link":        { "$value": "{color.rose.600}",    "resolved": "#C2185B" },
+      "link-hover":  { "$value": "{color.rose.700}",    "resolved": "#9A0E47" }
+    },
+    "border": {
+      "default":  { "$value": "{color.neutral.200}", "resolved": "#E4E4E7" },
+      "subtle":   { "$value": "{color.neutral.100}", "resolved": "#F4F4F5" },
+      "strong":   { "$value": "{color.neutral.300}", "resolved": "#D4D4D8" },
+      "brand":    { "$value": "{color.rose.400}",    "resolved": "#F06292" },
+      "focus":    { "$value": "{color.info.500}",    "resolved": "#2563EB" }
+    },
+    "button": {
+      "primary": {
+        "default":  { "bg": "#E91E63", "text": "#FFFFFF", "border": "transparent", "shadow": "{shadow.sm}" },
+        "hover":    { "bg": "#C2185B", "text": "#FFFFFF", "border": "transparent", "shadow": "{shadow.md}" },
+        "focus":    { "bg": "#E91E63", "text": "#FFFFFF", "border": "transparent", "ring": "2px solid #2563EB", "ringOffset": "2px" },
+        "pressed":  { "bg": "#9A0E47", "text": "#FFFFFF", "border": "transparent", "shadow": "{shadow.xs}", "transform": "scale(0.98)" },
+        "disabled": { "bg": "#E4E4E7", "text": "#A1A1AA", "border": "transparent", "cursor": "not-allowed" },
+        "loading":  { "bg": "#E91E63", "text": "rgba(255,255,255,0.7)", "border": "transparent", "spinner": "#FFFFFF" }
+      },
+      "secondary": {
+        "default":  { "bg": "transparent", "text": "#C2185B", "border": "1.5px solid #F06292" },
+        "hover":    { "bg": "#FFF5F8",     "text": "#9A0E47", "border": "1.5px solid #E91E63" },
+        "focus":    { "bg": "transparent", "text": "#C2185B", "border": "1.5px solid #F06292", "ring": "2px solid #2563EB", "ringOffset": "2px" },
+        "pressed":  { "bg": "#FFE4EC",     "text": "#6B0A32", "border": "1.5px solid #C2185B" },
+        "disabled": { "bg": "transparent", "text": "#A1A1AA", "border": "1.5px solid #E4E4E7", "cursor": "not-allowed" },
+        "loading":  { "bg": "transparent", "text": "rgba(194,24,91,0.7)", "border": "1.5px solid #F06292", "spinner": "#C2185B" }
+      },
+      "ghost": {
+        "default":  { "bg": "transparent", "text": "#C2185B", "border": "transparent" },
+        "hover":    { "bg": "#FFF5F8",     "text": "#9A0E47", "border": "transparent" },
+        "focus":    { "bg": "transparent", "text": "#C2185B", "border": "transparent", "ring": "2px solid #2563EB", "ringOffset": "2px" },
+        "pressed":  { "bg": "#FFE4EC",     "text": "#6B0A32", "border": "transparent" },
+        "disabled": { "bg": "transparent", "text": "#A1A1AA", "border": "transparent" },
+        "loading":  { "bg": "transparent", "text": "rgba(194,24,91,0.7)", "border": "transparent", "spinner": "#C2185B" }
+      },
+      "destructive": {
+        "default":  { "bg": "#DC2626", "text": "#FFFFFF", "border": "transparent", "shadow": "{shadow.sm}" },
+        "hover":    { "bg": "#B91C1C", "text": "#FFFFFF", "border": "transparent", "shadow": "{shadow.md}" },
+        "focus":    { "bg": "#DC2626", "text": "#FFFFFF", "border": "transparent", "ring": "2px solid #2563EB", "ringOffset": "2px" },
+        "pressed":  { "bg": "#991B1B", "text": "#FFFFFF", "border": "transparent", "transform": "scale(0.98)" },
+        "disabled": { "bg": "#E4E4E7", "text": "#A1A1AA", "border": "transparent", "cursor": "not-allowed" },
+        "loading":  { "bg": "#DC2626", "text": "rgba(255,255,255,0.7)", "border": "transparent", "spinner": "#FFFFFF" }
+      }
+    },
+    "label": {
+      "default":    { "text": "#3F3F46", "helper": "#71717A", "input-border": "#D4D4D8", "input-bg": "#FFFFFF" },
+      "focus":      { "text": "#C2185B", "helper": "#71717A", "input-border": "#E91E63", "input-bg": "#FFFFFF", "ring": "2px solid rgba(233,30,99,0.2)" },
+      "filled":     { "text": "#3F3F46", "helper": "#71717A", "input-border": "#A1A1AA", "input-bg": "#FFFFFF" },
+      "error":      { "text": "#DC2626", "helper": "#DC2626", "input-border": "#DC2626", "input-bg": "#FEE2E2" },
+      "success":    { "text": "#16A34A", "helper": "#16A34A", "input-border": "#16A34A", "input-bg": "#FFFFFF" },
+      "disabled":   { "text": "#A1A1AA", "helper": "#A1A1AA", "input-border": "#E4E4E7", "input-bg": "#F4F4F5" },
+      "required":   { "marker": "#E91E63" }
+    },
+    "card": {
+      "default":     { "bg": "#FFFFFF", "border": "1px solid #E4E4E7", "shadow": "{shadow.sm}" },
+      "elevated":    { "bg": "#FFFFFF", "border": "none",             "shadow": "{shadow.md}" },
+      "soft":        { "bg": "#FDFAF7", "border": "1px solid #EEDFD0", "shadow": "none" },
+      "brand":       { "bg": "#FFF5F8", "border": "1px solid #FFC2D4", "shadow": "none" },
+      "interactive": {
+        "default": { "bg": "#FFFFFF", "border": "1px solid #E4E4E7", "shadow": "{shadow.sm}" },
+        "hover":   { "bg": "#FDFAF7", "border": "1px solid #FF9BB8", "shadow": "{shadow.lg}" }
+      },
+      "selected":    { "bg": "#FFF5F8", "border": "2px solid #E91E63", "shadow": "{shadow.sm}" },
+      "disabled":    { "bg": "#F4F4F5", "border": "1px solid #E4E4E7", "shadow": "none", "opacity": 0.6 }
+    }
+  }
+}

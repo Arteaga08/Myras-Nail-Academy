@@ -1,6 +1,14 @@
-require('dotenv').config();
-const { connectDB } = require('./config/db');
-const app = require('./app');
+import 'dotenv/config';
+import { connectDB } from './config/db.js';
+import app from './app.js';
+
+// Validate required environment variables before starting
+const REQUIRED_ENV = ['MONGO_URI', 'JWT_SECRET', 'STRIPE_SECRET_KEY', 'STRIPE_WEBHOOK_SECRET'];
+const missingEnv = REQUIRED_ENV.filter((key) => !process.env[key]);
+if (missingEnv.length > 0) {
+  console.error(`❌ Missing required environment variables: ${missingEnv.join(', ')}`);
+  process.exit(1);
+}
 
 const PORT = process.env.PORT || 5000;
 

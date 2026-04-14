@@ -1,8 +1,10 @@
-const express = require('express');
-const { adminLogin } = require('../controllers/authController');
+import express from 'express';
+import { adminLogin } from '../controllers/authController.js';
+import validate from '../middleware/validateMiddleware.js';
+import { adminLoginSchema } from '../validators/auth.validator.js';
 
 const router = express.Router();
 
-router.post('/login', adminLogin);
+router.post('/login', validate(adminLoginSchema), adminLogin);
 
-module.exports = router;
+export default router;

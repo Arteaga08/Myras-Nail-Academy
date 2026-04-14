@@ -1,10 +1,23 @@
-const mongoSanitize = require('express-mongo-sanitize');
-const xss = require('xss');
+import xss from 'xss';
 
-// Sanitize against NoSQL injection (removes $ and . from keys)
-const sanitizeNoSQL = mongoSanitize({
-  replaceWith: '_',
-});
+// Recursively removes keys containing $ or . (NoSQL injection prevention)
+const sanitizeObject = (obj) => {
+  if (typeof obj !== 'object' || obj === null) return obj;
+  for (const key of Object.keys(obj)) {
+    if (key.includes('$') || key.includes('.')) {
+      delete obj[key];
+    } else {
+      obj[key] = sanitizeObject(obj[key]);
+    }
+  }
+  return obj;
+};
+
+// Sanitize against NoSQL injection — only touches req.body (Express 5 compatible)
+const sanitizeNoSQL = (req, res, next) => {
+  if (req.body) sanitizeObject(req.body);
+  next();
+};
 
 // Sanitize against XSS (clean body string values)
 const sanitizeXSS = (req, res, next) => {
@@ -23,4 +36,4 @@ const sanitizeXSS = (req, res, next) => {
   next();
 };
 
-module.exports = { sanitizeNoSQL, sanitizeXSS };
+export { sanitizeNoSQL, sanitizeXSS };
