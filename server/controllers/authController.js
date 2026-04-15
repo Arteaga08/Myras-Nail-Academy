@@ -3,10 +3,15 @@ import asyncHandler from '../utils/asyncHandler.js';
 import User from '../models/User.js';
 import AdminUser from '../models/AdminUser.js';
 
+const MAX_ADMIN_LOGIN_ATTEMPTS = 5;
+const ADMIN_LOCK_DURATION_MS = 15 * 60 * 1000;
+
 const generateToken = (id, role) => {
-  return jwt.sign({ id, role }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN || '30d',
-  });
+  const expiresIn =
+    role === 'admin'
+      ? process.env.JWT_EXPIRES_IN_ADMIN || '1d'
+      : process.env.JWT_EXPIRES_IN_STUDENT || '7d';
+  return jwt.sign({ id, role }, process.env.JWT_SECRET, { expiresIn });
 };
 
 // @desc    Register a new student
@@ -88,7 +93,7 @@ const updateMe = asyncHandler(async (req, res) => {
   });
 
   const user = await User.findByIdAndUpdate(req.user._id, updates, {
-    new: true,
+    returnDocument: 'after',
     runValidators: true,
   });
 
@@ -107,12 +112,40 @@ const adminLogin = asyncHandler(async (req, res) => {
   }
 
   const admin = await AdminUser.findOne({ email }).select('+password');
-  if (!admin || !(await admin.matchPassword(password))) {
+
+  // Return generic error for unknown emails (no user enumeration)
+  if (!admin) {
     res.status(401);
     throw new Error('Invalid email or password');
   }
 
-  // Update last login timestamp
+  // Check lockout before validating password
+  if (admin.lockedUntil && admin.lockedUntil > new Date()) {
+    const retrySeconds = Math.ceil((admin.lockedUntil.getTime() - Date.now()) / 1000);
+    res.set('Retry-After', String(retrySeconds));
+    res.status(429);
+    throw new Error(`Account locked. Try again in ${retrySeconds} seconds.`);
+  }
+
+  const passwordMatch = await admin.matchPassword(password);
+
+  if (!passwordMatch) {
+    admin.failedLoginAttempts = (admin.failedLoginAttempts || 0) + 1;
+    if (admin.failedLoginAttempts >= MAX_ADMIN_LOGIN_ATTEMPTS) {
+      admin.lockedUntil = new Date(Date.now() + ADMIN_LOCK_DURATION_MS);
+      await admin.save({ validateBeforeSave: false });
+      res.set('Retry-After', String(Math.ceil(ADMIN_LOCK_DURATION_MS / 1000)));
+      res.status(429);
+      throw new Error('Too many failed attempts. Account locked for 15 minutes.');
+    }
+    await admin.save({ validateBeforeSave: false });
+    res.status(401);
+    throw new Error('Invalid email or password');
+  }
+
+  // Successful login — reset counters and stamp lastLogin
+  admin.failedLoginAttempts = 0;
+  admin.lockedUntil = null;
   admin.lastLogin = new Date();
   await admin.save({ validateBeforeSave: false });
 

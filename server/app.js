@@ -50,10 +50,20 @@ const reviewLimiter = rateLimit({
   message: { success: false, message: 'Demasiadas reseñas. Intenta de nuevo más tarde.' },
 });
 
+// Stripe webhook limiter — prevents DoS against constructEvent signature checks
+const webhookLimiter = rateLimit({
+  ...commonLimiterOpts,
+  windowMs: 60 * 1000,
+  max: 30,
+  skipFailedRequests: false,
+  message: { success: false, message: 'Too many webhook requests.' },
+});
+
 // Apply limiters (specific routes first — Express matches in order)
 app.use('/api/auth/login', authLimiter);
 app.use('/api/auth/register', authLimiter);
 app.use('/api/admin/auth/login', authLimiter);
+app.use('/api/webhooks/stripe', webhookLimiter);
 app.use('/api/orders', orderLimiter);
 app.use('/api/reviews', reviewLimiter);
 app.use('/api', generalLimiter);

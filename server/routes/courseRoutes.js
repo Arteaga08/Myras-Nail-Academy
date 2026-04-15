@@ -3,17 +3,20 @@ import { getPublishedCourses, getCourseById } from '../controllers/courseControl
 import { getCourseLessons, markLessonWatched } from '../controllers/lessonController.js';
 import { getCourseReviews } from '../controllers/reviewController.js';
 import { protect, optionalProtect } from '../middleware/authMiddleware.js';
+import validate from '../middleware/validateMiddleware.js';
+import { paginationSchema } from '../validators/pagination.validator.js';
+import { idParamSchema } from '../validators/objectId.validator.js';
 
 const router = express.Router();
 
-router.get('/', getPublishedCourses);
-router.get('/:id', getCourseById);
+router.get('/', validate(paginationSchema, 'query'), getPublishedCourses);
+router.get('/:id', validate(idParamSchema, 'params'), getCourseById);
 
 // Lessons — optionally authenticated (enrolled = full content, anonymous = metadata)
-router.get('/:id/lessons', optionalProtect, getCourseLessons);
+router.get('/:id/lessons', validate(idParamSchema, 'params'), optionalProtect, getCourseLessons);
 router.post('/:id/lessons/:lessonId/watched', protect, markLessonWatched);
 
 // Reviews — public
-router.get('/:id/reviews', getCourseReviews);
+router.get('/:id/reviews', validate(idParamSchema, 'params'), getCourseReviews);
 
 export default router;

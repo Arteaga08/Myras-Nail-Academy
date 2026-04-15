@@ -26,6 +26,14 @@ const adminUserSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+    failedLoginAttempts: {
+      type: Number,
+      default: 0,
+    },
+    lockedUntil: {
+      type: Date,
+      default: null,
+    },
   },
   { timestamps: true }
 );

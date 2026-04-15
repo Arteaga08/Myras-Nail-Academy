@@ -104,7 +104,7 @@ const updateCourse = asyncHandler(async (req, res) => {
   }
 
   const course = await Course.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
+    returnDocument: 'after',
     runValidators: true,
   });
 
@@ -127,7 +127,7 @@ const archiveCourse = asyncHandler(async (req, res) => {
   const course = await Course.findByIdAndUpdate(
     req.params.id,
     { isPublished: false },
-    { new: true }
+    { returnDocument: 'after' }
   );
 
   if (!course) {

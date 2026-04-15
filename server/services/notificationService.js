@@ -1,7 +1,8 @@
 import nodemailer from 'nodemailer';
+import he from 'he';
 
 const createTransporter = () => {
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT) || 587,
     secure: false,
@@ -16,15 +17,17 @@ const createTransporter = () => {
 const sendEnrollmentConfirmationEmail = async ({ studentEmail, studentName, courseTitle }) => {
   try {
     const transporter = createTransporter();
+    const safeName = he.encode(String(studentName ?? ''));
+    const safeTitle = he.encode(String(courseTitle ?? ''));
 
     await transporter.sendMail({
       from: `"Myra's Nail Academy" <${process.env.SMTP_USER}>`,
       to: studentEmail,
       subject: `¡Bienvenida al curso: ${courseTitle}!`,
       html: `
-        <h2>¡Hola ${studentName}!</h2>
+        <h2>¡Hola ${safeName}!</h2>
         <p>Tu pago fue procesado exitosamente. Ya tienes acceso completo al curso:</p>
-        <h3>${courseTitle}</h3>
+        <h3>${safeTitle}</h3>
         <p>Ingresa a tu cuenta para comenzar a aprender.</p>
         <br/>
         <p>Con cariño,<br/>Myra's Nail Academy 💅</p>
@@ -41,6 +44,9 @@ const sendEnrollmentConfirmationEmail = async ({ studentEmail, studentName, cour
 const notifyAdminNewEnrollment = async ({ studentName, studentEmail, courseTitle, amount }) => {
   try {
     const transporter = createTransporter();
+    const safeName = he.encode(String(studentName ?? ''));
+    const safeEmail = he.encode(String(studentEmail ?? ''));
+    const safeTitle = he.encode(String(courseTitle ?? ''));
 
     await transporter.sendMail({
       from: `"Myra's Nail Academy" <${process.env.SMTP_USER}>`,
@@ -48,8 +54,8 @@ const notifyAdminNewEnrollment = async ({ studentName, studentEmail, courseTitle
       subject: `💰 Nueva inscripción: ${courseTitle}`,
       html: `
         <h2>Nueva inscripción recibida</h2>
-        <p><strong>Alumna:</strong> ${studentName} (${studentEmail})</p>
-        <p><strong>Curso:</strong> ${courseTitle}</p>
+        <p><strong>Alumna:</strong> ${safeName} (${safeEmail})</p>
+        <p><strong>Curso:</strong> ${safeTitle}</p>
         <p><strong>Monto:</strong> $${(amount / 100).toFixed(2)} MXN</p>
       `,
     });

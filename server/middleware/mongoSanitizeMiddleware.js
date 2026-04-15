@@ -13,26 +13,32 @@ const sanitizeObject = (obj) => {
   return obj;
 };
 
-// Sanitize against NoSQL injection — only touches req.body (Express 5 compatible)
+// Recursively XSS-clean string values in-place (Express 5 req.query/req.params are getter-only)
+const sanitizeStringsInPlace = (obj) => {
+  if (typeof obj !== 'object' || obj === null) return;
+  for (const key of Object.keys(obj)) {
+    const value = obj[key];
+    if (typeof value === 'string') {
+      obj[key] = xss(value);
+    } else if (typeof value === 'object' && value !== null) {
+      sanitizeStringsInPlace(value);
+    }
+  }
+};
+
+// Sanitize against NoSQL injection on body, query and params
 const sanitizeNoSQL = (req, res, next) => {
-  if (req.body) sanitizeObject(req.body);
+  if (req.body && !Buffer.isBuffer(req.body)) sanitizeObject(req.body);
+  if (req.query) sanitizeObject(req.query);
+  if (req.params) sanitizeObject(req.params);
   next();
 };
 
-// Sanitize against XSS (clean body string values)
+// Sanitize against XSS on body, query and params (mutate in-place for Express 5)
 const sanitizeXSS = (req, res, next) => {
-  if (req.body) {
-    const sanitizeValue = (value) => {
-      if (typeof value === 'string') return xss(value);
-      if (typeof value === 'object' && value !== null) {
-        return Object.fromEntries(
-          Object.entries(value).map(([k, v]) => [k, sanitizeValue(v)])
-        );
-      }
-      return value;
-    };
-    req.body = sanitizeValue(req.body);
-  }
+  if (req.body && !Buffer.isBuffer(req.body)) sanitizeStringsInPlace(req.body);
+  if (req.query) sanitizeStringsInPlace(req.query);
+  if (req.params) sanitizeStringsInPlace(req.params);
   next();
 };
 

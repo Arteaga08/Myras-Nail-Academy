@@ -68,7 +68,7 @@ const createOrder = asyncHandler(async (req, res) => {
     {
       amount: amountInCents,
       currency: 'mxn',
-      automatic_payment_methods: { enabled: true },
+      automatic_payment_methods: { enabled: true, allow_redirects: 'never' },
       metadata: {
         courseId: courseId.toString(),
         userId: req.user._id.toString(),

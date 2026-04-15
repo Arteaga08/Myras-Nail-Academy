@@ -83,7 +83,7 @@ const courseSchema = new mongoose.Schema(
 );
 
 // Auto-generate slug from title on create
-courseSchema.pre('save', function (next) {
+courseSchema.pre('save', function () {
   if (this.isModified('title') && !this.slug) {
     this.slug = this.title
       .toLowerCase()
@@ -92,7 +92,6 @@ courseSchema.pre('save', function (next) {
       .replace(/-+/g, '-')
       .trim();
   }
-  next();
 });
 
 // Virtual: returns the price the student actually pays

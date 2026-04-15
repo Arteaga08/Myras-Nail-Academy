@@ -1,10 +1,6 @@
-import mongoose from 'mongoose';
 import getStripe from '../config/stripe.js';
 import Payment from '../models/Payment.js';
-import Enrollment from '../models/Enrollment.js';
-import User from '../models/User.js';
-import Course from '../models/Course.js';
-import { sendEnrollmentConfirmationEmail, notifyAdminNewEnrollment } from '../services/notificationService.js';
+import { markPaymentPaid } from '../services/paymentReconciliationService.js';
 
 // @desc    Handle Stripe webhook events
 // @route   POST /api/webhooks/stripe
@@ -24,69 +20,15 @@ const handleStripeWebhook = async (req, res) => {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
+  const intentId = event.data?.object?.id;
+  console.log(`📨 Stripe event received: type=${event.type} id=${event.id} intent=${intentId ?? 'n/a'}`);
+
   try {
     if (event.type === 'payment_intent.succeeded') {
-      const paymentIntent = event.data.object;
-      const session = await mongoose.startSession();
-
-      try {
-        await session.withTransaction(async () => {
-          const payment = await Payment.findOneAndUpdate(
-            { stripeIntentId: paymentIntent.id },
-            { status: 'paid' },
-            { new: true, session }
-          );
-
-          if (!payment) {
-            throw new Error(`Payment not found for intent: ${paymentIntent.id}`);
-          }
-
-          // Avoid duplicate enrollments
-          const existing = await Enrollment.findOne({
-            userId: payment.userId,
-            courseId: payment.courseId,
-          }).session(session);
-
-          if (!existing) {
-            await Enrollment.create(
-              [
-                {
-                  userId: payment.userId,
-                  courseId: payment.courseId,
-                  paymentId: payment._id,
-                  accessGranted: true,
-                },
-              ],
-              { session }
-            );
-          }
-        });
-
-        // Send notifications outside transaction (non-critical)
-        const [user, course] = await Promise.all([
-          User.findById(paymentIntent.metadata.userId),
-          Course.findById(paymentIntent.metadata.courseId),
-        ]);
-
-        if (user && course) {
-          await sendEnrollmentConfirmationEmail({
-            studentEmail: user.email,
-            studentName: user.firstName,
-            courseTitle: course.title,
-          });
-
-          await notifyAdminNewEnrollment({
-            studentName: `${user.firstName} ${user.lastName}`,
-            studentEmail: user.email,
-            courseTitle: course.title,
-            amount: paymentIntent.amount,
-          });
-        }
-
-        console.log(`✅ Enrollment created for intent: ${paymentIntent.id}`);
-      } finally {
-        session.endSession();
-      }
+      const { enrollmentCreated } = await markPaymentPaid(event.data.object);
+      console.log(
+        `✅ Payment paid for intent ${event.data.object.id} (enrollmentCreated=${enrollmentCreated})`
+      );
     } else if (event.type === 'payment_intent.payment_failed') {
       const paymentIntent = event.data.object;
       await Payment.findOneAndUpdate(
@@ -112,7 +54,9 @@ const handleStripeWebhook = async (req, res) => {
       }
     }
   } catch (err) {
-    console.error(`❌ Webhook processing error: ${err.message}`);
+    console.error(
+      `❌ Webhook processing error (event=${event.id} type=${event.type} intent=${intentId ?? 'n/a'}): ${err.message}`
+    );
     return res.status(500).json({ error: 'Webhook processing failed' });
   }
 
