@@ -1,0 +1,28 @@
+{
+  "name": "myras-nail-academy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently --names \"SERVER,CLIENT\" --prefix-colors \"magenta,cyan\" \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arteaga08/Myras-Nail-Academy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Arteaga08/Myras-Nail-Academy/issues"
+  },
+  "homepage": "https://github.com/Arteaga08/Myras-Nail-Academy#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

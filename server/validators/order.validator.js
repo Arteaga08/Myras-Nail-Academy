@@ -1,7 +1,8 @@
 import { z } from 'zod';
+import { objectIdSchema } from './objectId.validator.js';
 
 const createOrderSchema = z.object({
-  courseId: z.string().min(1, 'Course ID is required'),
+  courseId: objectIdSchema,
 });
 
 export { createOrderSchema };

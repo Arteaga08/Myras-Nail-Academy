@@ -17,7 +17,7 @@ import {
   deleteCategory,
 } from '../controllers/categoryController.js';
 
-import { deleteReview } from '../controllers/reviewController.js';
+import { deleteReview, getAdminReviews } from '../controllers/reviewController.js';
 import { getUsers, getUserById, getAdminOrders, getDashboardStats, getAuditLogs } from '../controllers/adminController.js';
 import { reconcileOrder } from '../controllers/adminOrderController.js';
 
@@ -61,6 +61,7 @@ router.get('/orders', validate(paginationSchema, 'query'), getAdminOrders);
 router.post('/orders/:paymentId/reconcile', validate(paymentIdParamSchema, 'params'), reconcileOrder);
 
 // ─── Reviews ──────────────────────────────────────────────────────────────────
+router.get('/reviews', validate(paginationSchema, 'query'), getAdminReviews);
 router.delete('/reviews/:id', validate(idParamSchema, 'params'), deleteReview);
 
 export default router;

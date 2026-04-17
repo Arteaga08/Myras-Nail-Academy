@@ -1,6 +1,7 @@
 import asyncHandler from '../utils/asyncHandler.js';
 import Review from '../models/Review.js';
 import Enrollment from '../models/Enrollment.js';
+import { createAuditLog } from '../services/auditService.js';
 
 // @desc    Create a review for a course (must be enrolled)
 // @route   POST /api/reviews
@@ -43,6 +44,31 @@ const getCourseReviews = asyncHandler(async (req, res) => {
   res.status(200).json({ status: 'success', data: reviews });
 });
 
+// @desc    Get all reviews (paginated)
+// @route   GET /api/admin/reviews
+// @access  Admin
+const getAdminReviews = asyncHandler(async (req, res) => {
+  const page = Math.max(1, parseInt(req.query.page) || 1);
+  const limit = Math.min(100, Math.max(1, parseInt(req.query.limit) || 20));
+  const skip = (page - 1) * limit;
+
+  const [total, reviews] = await Promise.all([
+    Review.countDocuments(),
+    Review.find()
+      .populate('userId', 'firstName lastName email')
+      .populate('courseId', 'title')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit),
+  ]);
+
+  res.status(200).json({
+    status: 'success',
+    data: reviews,
+    pagination: { page, limit, total, totalPages: Math.ceil(total / limit) },
+  });
+});
+
 // @desc    Delete a review
 // @route   DELETE /api/admin/reviews/:id
 // @access  Admin
@@ -52,7 +78,17 @@ const deleteReview = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error('Review not found');
   }
+
+  await createAuditLog({
+    adminId: req.user._id,
+    action: 'DELETE_REVIEW',
+    module: 'Review',
+    targetId: review._id,
+    details: { courseId: review.courseId, rating: review.rating },
+    ip: req.ip,
+  });
+
   res.status(200).json({ status: 'success', message: 'Review deleted' });
 });
 
-export { createReview, getCourseReviews, deleteReview };
+export { createReview, getCourseReviews, deleteReview, getAdminReviews };

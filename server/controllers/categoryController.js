@@ -1,5 +1,6 @@
 import asyncHandler from '../utils/asyncHandler.js';
 import Category from '../models/Category.js';
+import { createAuditLog } from '../services/auditService.js';
 
 // @desc    Get all categories
 // @route   GET /api/categories
@@ -16,6 +17,16 @@ const createCategory = asyncHandler(async (req, res) => {
   const { name, description } = req.body;
   const slug = req.body.slug || name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
   const category = await Category.create({ name, slug, description });
+
+  await createAuditLog({
+    adminId: req.user._id,
+    action: 'CREATE_CATEGORY',
+    module: 'Category',
+    targetId: category._id,
+    details: { name },
+    ip: req.ip,
+  });
+
   res.status(201).json({ status: 'success', data: category });
 });
 
@@ -31,6 +42,16 @@ const updateCategory = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error('Category not found');
   }
+
+  await createAuditLog({
+    adminId: req.user._id,
+    action: 'UPDATE_CATEGORY',
+    module: 'Category',
+    targetId: category._id,
+    details: { name: category.name },
+    ip: req.ip,
+  });
+
   res.status(200).json({ status: 'success', data: category });
 });
 
@@ -43,6 +64,16 @@ const deleteCategory = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error('Category not found');
   }
+
+  await createAuditLog({
+    adminId: req.user._id,
+    action: 'DELETE_CATEGORY',
+    module: 'Category',
+    targetId: category._id,
+    details: { name: category.name },
+    ip: req.ip,
+  });
+
   res.status(200).json({ status: 'success', message: 'Category deleted' });
 });
 

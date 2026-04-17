@@ -73,8 +73,14 @@ const getAdminOrders = asyncHandler(async (req, res) => {
 // @route   GET /api/admin/stats
 // @access  Admin
 const getDashboardStats = asyncHandler(async (req, res) => {
-  const [revenueStats, totalStudents, totalCourses, recentEnrollments, courseBreakdown] =
-    await Promise.all([
+  const [
+    revenueStats,
+    totalStudents,
+    totalCourses,
+    completedCourses,
+    recentEnrollments,
+    courseBreakdown,
+  ] = await Promise.all([
       Payment.aggregate([
         { $match: { status: 'paid' } },
         {
@@ -87,6 +93,7 @@ const getDashboardStats = asyncHandler(async (req, res) => {
       ]),
       User.countDocuments(),
       Course.countDocuments({ isPublished: true }),
+      Enrollment.countDocuments({ completedAt: { $ne: null } }),
       Enrollment.find()
         .populate('userId', 'firstName lastName email')
         .populate('courseId', 'title')
@@ -125,6 +132,7 @@ const getDashboardStats = asyncHandler(async (req, res) => {
       totalOrders: revenueStats[0]?.totalOrders ?? 0,
       totalStudents,
       totalCourses,
+      completedCourses,
       recentEnrollments,
       courseBreakdown,
     },

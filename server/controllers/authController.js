@@ -162,4 +162,27 @@ const adminLogin = asyncHandler(async (req, res) => {
   });
 });
 
-export { register, login, getMe, updateMe, adminLogin };
+// @desc    Change student password
+// @route   PUT /api/auth/me/password
+// @access  Private
+const changePassword = asyncHandler(async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+
+  if (!currentPassword || !newPassword) {
+    res.status(400);
+    throw new Error('Please provide current and new password');
+  }
+
+  const user = await User.findById(req.user._id).select('+password');
+  if (!user || !(await user.matchPassword(currentPassword))) {
+    res.status(401);
+    throw new Error('Current password is incorrect');
+  }
+
+  user.password = newPassword;
+  await user.save();
+
+  res.status(200).json({ status: 'success', message: 'Password updated successfully' });
+});
+
+export { register, login, getMe, updateMe, changePassword, adminLogin };

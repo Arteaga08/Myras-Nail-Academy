@@ -1,10 +1,8 @@
-const WHITELIST = process.env.CORS_WHITELIST
-  ? process.env.CORS_WHITELIST.split(',')
-  : ['http://localhost:3000'];
+const ALLOWED_ORIGIN = process.env.FRONTEND_URL || 'http://localhost:5173';
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (!origin || WHITELIST.includes(origin)) {
+    if (!origin || origin === ALLOWED_ORIGIN) {
       callback(null, true);
     } else {
       callback(new Error(`CORS policy: origin ${origin} not allowed`));
