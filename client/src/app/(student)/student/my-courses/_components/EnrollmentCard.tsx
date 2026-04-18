@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import {
   BookOpenIcon as BookOpen,
   CalendarBlankIcon as CalendarBlank,
@@ -75,9 +76,11 @@ export function EnrollmentCard({ enrollment }: EnrollmentCardProps) {
         {isCompleted ? (
           <Badge color="success" className="self-start">Completado ✓</Badge>
         ) : (
-          <Button variant="primary" size="sm" disabled>
-            Continuar →
-          </Button>
+          <Link href={`/student/courses/${courseId._id}`}>
+            <Button variant="primary" size="sm">
+              Continuar →
+            </Button>
+          </Link>
         )}
 
         {/* Certificate section — only when completed */}

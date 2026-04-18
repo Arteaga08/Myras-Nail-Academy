@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { SignOutIcon as SignOut } from '@phosphor-icons/react/ssr'
 import { useStudentAuth } from '@/hooks/useStudentAuth'
+import { useStudentProfile } from '@/hooks/useStudentProfile'
 import { Button } from '@/components/ui/Button'
 
 const GUEST_LINKS = [
@@ -18,6 +19,7 @@ const AUTH_LINKS = [
 
 export function StudentTopbar() {
   const { token, studentName, logout } = useStudentAuth()
+  const { profile } = useStudentProfile()
   const pathname = usePathname()
 
   const navLinks = token ? AUTH_LINKS : GUEST_LINKS
@@ -62,9 +64,17 @@ export function StudentTopbar() {
       {token ? (
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-100 text-sm font-semibold text-rose-600">
-              {initial}
-            </div>
+            {profile?.profilePicture ? (
+              <img
+                src={profile.profilePicture}
+                alt={studentName ?? 'Avatar'}
+                className="h-8 w-8 rounded-full object-cover"
+              />
+            ) : (
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-100 text-sm font-semibold text-rose-600">
+                {initial}
+              </div>
+            )}
             <span className="hidden text-sm font-medium text-neutral-700 sm:block">
               {studentName}
             </span>

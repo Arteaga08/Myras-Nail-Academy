@@ -12,6 +12,7 @@ const createLessonSchema = z.object({
   videoUrl: httpUrl,
   duration: z.number().min(0).optional(),
   isFree: z.boolean().optional(),
+  materials: z.array(z.string().min(1, 'Material name is required')).optional(),
   resources: z
     .array(
       z.object({

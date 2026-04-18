@@ -15,6 +15,7 @@ const schema = z.object({
   videoUrl: z.string().url('URL válida').or(z.string().length(0)).optional(),
   duration: z.coerce.number().min(0).optional(),
   order: z.coerce.number().min(1),
+  materialsRaw: z.string().optional(),
 })
 
 type FormData = z.infer<typeof schema>
@@ -26,6 +27,7 @@ interface Lesson {
   videoUrl: string
   duration: number
   order: number
+  materials?: string[]
 }
 
 interface LessonFormModalProps {
@@ -61,24 +63,32 @@ export function LessonFormModal({
         videoUrl: lesson.videoUrl ?? '',
         duration: lesson.duration ?? 0,
         order: lesson.order,
+        materialsRaw: lesson.materials?.join(', ') ?? '',
       })
     } else {
-      reset({ order: 1 })
+      reset({ order: 1, materialsRaw: '' })
     }
   }, [lesson, reset])
 
   async function onSubmit(data: FormData) {
     setServerError(null)
     try {
+      const { materialsRaw, ...rest } = data
+      const payload = {
+        ...rest,
+        materials: materialsRaw
+          ? materialsRaw.split(',').map((s) => s.trim()).filter(Boolean)
+          : [],
+      }
       if (isEdit) {
-        await apiFetch(`/api/admin/courses/${courseId}/lessons/${lesson._id}`, {
+        await apiFetch(`/api/admin/lessons/${lesson._id}`, {
           method: 'PUT',
-          body: JSON.stringify(data),
+          body: JSON.stringify(payload),
         })
       } else {
         await apiFetch(`/api/admin/courses/${courseId}/lessons`, {
           method: 'POST',
-          body: JSON.stringify(data),
+          body: JSON.stringify(payload),
         })
       }
       onSaved()
@@ -111,6 +121,17 @@ export function LessonFormModal({
           error={errors.videoUrl?.message}
           {...register('videoUrl')}
         />
+        <div>
+          <Textarea
+            label="Materiales Necesarios"
+            rows={2}
+            placeholder="Lima de uñas, esmalte base, top coat..."
+            {...register('materialsRaw')}
+          />
+          <p className="mt-1 text-xs text-neutral-400">
+            Separa cada material con una coma. Cada uno se mostrará como viñeta independiente.
+          </p>
+        </div>
         <div className="grid grid-cols-2 gap-4">
           <Input
             label="Duración (min)"

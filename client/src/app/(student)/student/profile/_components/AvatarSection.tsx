@@ -36,7 +36,7 @@ interface AvatarSectionProps {
 }
 
 export function AvatarSection({ profile, onSuccess }: AvatarSectionProps) {
-  const { showToast } = useToast()
+  const showToast = useToast()
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [isSaving, setIsSaving] = useState(false)
   const [isUploading, setIsUploading] = useState(false)

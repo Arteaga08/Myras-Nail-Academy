@@ -1,9 +1,12 @@
+import { FloatingAssets } from '@/components/student/FloatingAssets'
 import { LoginForm } from './LoginForm'
 
 export function LoginCard() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-nude-50 px-4">
-      <div className="w-full max-w-md">
+    <div className="relative flex min-h-dvh items-center justify-center px-4 py-12">
+      <FloatingAssets />
+
+      <div className="relative z-10 w-full max-w-md">
         {/* Logo / Brand */}
         <div className="mb-8 text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-500 shadow-lg">
@@ -16,10 +19,11 @@ export function LoginCard() {
         </div>
 
         {/* Card */}
-        <div className="rounded-2xl border border-neutral-200 bg-white p-8 shadow-md">
-          <h2 className="font-display mb-6 text-xl font-semibold text-neutral-900">
+        <div className="rounded-2xl border border-rose-100 bg-white/90 p-8 shadow-lg backdrop-blur-sm">
+          <h2 className="font-display mb-1 text-xl font-semibold text-neutral-900">
             Iniciar sesión
           </h2>
+          <p className="mb-6 text-sm text-neutral-500">Solo personal autorizado</p>
           <LoginForm />
         </div>
 

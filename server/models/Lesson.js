@@ -27,6 +27,10 @@ const lessonSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    materials: {
+      type: [String],
+      default: [],
+    },
     resources: [
       {
         name: { type: String, required: true },
