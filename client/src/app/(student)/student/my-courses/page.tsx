@@ -10,6 +10,7 @@ import { BookOpenIcon as BookOpen } from '@phosphor-icons/react/ssr'
 import { WelcomeHero } from './_components/WelcomeHero'
 import { StudentStatsRow } from './_components/StudentStatsRow'
 import { CoursesGrid } from './_components/CoursesGrid'
+import { NailSparkle } from '@/components/ui/DecorativeAssets'
 
 export default function MyCoursesPage() {
   const { studentName } = useStudentAuth()
@@ -41,7 +42,10 @@ export default function MyCoursesPage() {
       <hr className="border-rose-100" />
 
       <section className="space-y-4">
-        <h2 className="font-display text-xl font-semibold text-neutral-900">Mis Cursos</h2>
+        <h2 className="flex items-center gap-2 font-display text-xl font-semibold text-neutral-900">
+          Mis Cursos
+          <NailSparkle size={22} className="shrink-0" />
+        </h2>
 
         {enrollments.length === 0 ? (
           <EmptyState

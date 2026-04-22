@@ -1,6 +1,7 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
+import { useSearchParams } from 'next/navigation'
 import { z } from 'zod'
 import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'

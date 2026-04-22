@@ -3,6 +3,7 @@
 import { useStudentProfile } from '@/hooks/useStudentProfile'
 import { FullPageSpinner } from '@/components/ui/Spinner'
 import { Card } from '@/components/ui/Card'
+import { NailAccent, NailSparkle } from '@/components/ui/DecorativeAssets'
 import { AvatarSection } from './_components/AvatarSection'
 import { ProfileForm } from './_components/ProfileForm'
 import { ChangePasswordForm } from './_components/ChangePasswordForm'
@@ -23,7 +24,10 @@ export default function ProfilePage() {
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <div>
-        <h1 className="font-display text-3xl font-bold text-neutral-900">Mi Perfil</h1>
+        <h1 className="flex items-center gap-3 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+          Mi Perfil
+          <NailAccent size={32} className="shrink-0" />
+        </h1>
         <p className="mt-2 text-base text-neutral-500">
           Administra tu información personal y preferencias.
         </p>
@@ -38,15 +42,17 @@ export default function ProfilePage() {
         {/* Forms column */}
         <div className="space-y-6 lg:col-span-2">
           <Card variant="default">
-            <h2 className="mb-4 font-display text-lg font-semibold text-neutral-900">
+            <h2 className="mb-4 flex items-center gap-2 font-display text-lg font-semibold text-neutral-900">
               Información Personal
+              <NailSparkle size={18} className="shrink-0" />
             </h2>
             <ProfileForm profile={profile} onSuccess={() => mutate()} />
           </Card>
 
           <Card variant="default">
-            <h2 className="mb-4 font-display text-lg font-semibold text-neutral-900">
+            <h2 className="mb-4 flex items-center gap-2 font-display text-lg font-semibold text-neutral-900">
               Cambiar Contraseña
+              <NailSparkle size={18} className="shrink-0" />
             </h2>
             <ChangePasswordForm />
           </Card>

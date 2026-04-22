@@ -23,7 +23,7 @@ interface ProfileFormProps {
 }
 
 export function ProfileForm({ profile, onSuccess }: ProfileFormProps) {
-  const { showToast } = useToast()
+  const showToast = useToast()
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: { firstName: profile.firstName, lastName: profile.lastName, bio: profile.bio ?? '' },

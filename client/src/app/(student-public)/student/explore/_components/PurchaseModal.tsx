@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
@@ -8,10 +8,11 @@ import { Button } from '@/components/ui/Button'
 import { useToast } from '@/components/ui/Toast'
 import { studentApiFetch } from '@/lib/studentApi'
 import { formatCurrency } from '@/lib/formatters'
+import { STRIPE_PUBLISHABLE_KEY } from '@/lib/env'
 import type { Course } from '@/hooks/useExploreCourses'
 import { XIcon as X } from '@phosphor-icons/react/ssr'
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? '')
+const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY)
 
 interface PurchaseModalProps {
   course: Course
@@ -23,7 +24,7 @@ function CheckoutForm({ amount, onClose, onSuccess }: { amount: number; onClose:
   const stripe = useStripe()
   const elements = useElements()
   const router = useRouter()
-  const { showToast } = useToast()
+  const showToast = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
 
@@ -70,33 +71,36 @@ function CheckoutForm({ amount, onClose, onSuccess }: { amount: number; onClose:
 }
 
 export function PurchaseModal({ course, onClose, onSuccess }: PurchaseModalProps) {
-  const { showToast } = useToast()
+  const showToast = useToast()
   const [clientSecret, setClientSecret] = useState<string | null>(null)
   const [paymentAmount, setPaymentAmount] = useState(0)
-  const [isCreating, setIsCreating] = useState(false)
+  const [isCreating, setIsCreating] = useState(true)
 
-  const initPayment = async () => {
-    setIsCreating(true)
-    try {
-      const res = await studentApiFetch<{ data: { clientSecret: string; amount: number } }>(
-        '/api/orders',
-        { method: 'POST', body: JSON.stringify({ courseId: course._id }) }
-      )
-      setClientSecret(res.data.clientSecret)
-      setPaymentAmount(res.data.amount)
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'No se pudo iniciar el pago.'
-      showToast(message, 'error')
-      onClose()
-    } finally {
-      setIsCreating(false)
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      try {
+        const res = await studentApiFetch<{ data: { clientSecret: string; amount: number } }>(
+          '/api/orders',
+          { method: 'POST', body: JSON.stringify({ courseId: course._id }) }
+        )
+        if (cancelled) return
+        setClientSecret(res.data.clientSecret)
+        setPaymentAmount(res.data.amount)
+      } catch (err: unknown) {
+        if (cancelled) return
+        const message = err instanceof Error ? err.message : 'No se pudo iniciar el pago.'
+        showToast(message, 'error')
+        onClose()
+      } finally {
+        if (!cancelled) setIsCreating(false)
+      }
+    })()
+    return () => {
+      cancelled = true
     }
-  }
-
-  // Auto-init when modal mounts
-  if (!clientSecret && !isCreating) {
-    initPayment()
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [course._id])
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">

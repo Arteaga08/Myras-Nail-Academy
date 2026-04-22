@@ -71,14 +71,17 @@ export function TD({
   children,
   className = '',
   colSpan,
+  title,
 }: {
   children?: React.ReactNode
   className?: string
   colSpan?: number
+  title?: string
 }) {
   return (
     <td
       colSpan={colSpan}
+      title={title}
       className={['px-4 py-3 text-neutral-900', className].filter(Boolean).join(' ')}
     >
       {children}

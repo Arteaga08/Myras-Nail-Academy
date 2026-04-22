@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { StarIcon as Star, BookOpenIcon as BookOpen } from '@phosphor-icons/react/ssr'
 import { Badge } from '@/components/ui/Badge'
@@ -32,7 +33,7 @@ export function ExploreCourseCard({ course, isEnrolled, onEnrollSuccess }: Explo
 
   return (
     <>
-      <div className="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-md">
         {/* Thumbnail */}
         {course.thumbnail ? (
           <img
@@ -88,8 +89,9 @@ export function ExploreCourseCard({ course, isEnrolled, onEnrollSuccess }: Explo
           {isEnrolled ? (
             <div className="flex items-center gap-2">
               <Badge color="success">Ya inscrita ✓</Badge>
-              {/* TODO: enlazar a reproductor cuando exista */}
-              <Button variant="ghost" size="sm" disabled>Ir al curso</Button>
+              <Link href={`/student/courses/${course._id}`}>
+                <Button variant="ghost" size="sm">Ir al curso</Button>
+              </Link>
             </div>
           ) : (
             <Button variant="primary" size="sm" onClick={handleBuyClick}>

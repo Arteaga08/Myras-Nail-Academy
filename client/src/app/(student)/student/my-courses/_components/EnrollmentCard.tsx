@@ -6,10 +6,10 @@ import {
   CalendarBlankIcon as CalendarBlank,
   CertificateIcon as Certificate,
 } from '@phosphor-icons/react/ssr'
-import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { formatDate } from '@/lib/formatters'
 import { useCertificateDownload } from '@/hooks/useCertificateDownload'
+import { CompletionBadge } from '@/components/ui/DecorativeAssets'
 import type { Enrollment } from '@/hooks/useMyEnrollments'
 
 interface EnrollmentCardProps {
@@ -74,7 +74,10 @@ export function EnrollmentCard({ enrollment }: EnrollmentCardProps) {
 
         {/* Action */}
         {isCompleted ? (
-          <Badge color="success" className="self-start">Completado ✓</Badge>
+          <div className="inline-flex items-center gap-1.5 self-start rounded-full border border-success-200 bg-success-50 px-3 py-1 text-xs font-medium text-success-700">
+            <CompletionBadge size={16} />
+            <span>Completado</span>
+          </div>
         ) : (
           <Link href={`/student/courses/${courseId._id}`}>
             <Button variant="primary" size="sm">

@@ -42,7 +42,8 @@ export function StudentAuthProvider({ children }: { children: React.ReactNode })
       localStorage.setItem('mna_student_name', name)
       localStorage.setItem('mna_student_email', email)
       localStorage.setItem('mna_student_id', id)
-      document.cookie = 'mna_student_session=1; path=/; max-age=604800'
+      const secure = window.location.protocol === 'https:' ? '; Secure' : ''
+      document.cookie = `mna_student_session=1; path=/; max-age=172800; SameSite=Lax${secure}`
       setState({ token, studentName: name, studentEmail: email, studentId: id, isLoading: false })
       router.push(redirectUrl ?? '/student/my-courses')
     },

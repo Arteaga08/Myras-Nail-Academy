@@ -1,6 +1,7 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useSearchParams } from 'next/navigation'
 import { Input } from '@/components/ui/Input'
@@ -14,7 +15,12 @@ const schema = z
     firstName: z.string().min(2, 'Mínimo 2 caracteres'),
     lastName: z.string().min(2, 'Mínimo 2 caracteres'),
     email: z.string().email('Ingresa un email válido'),
-    password: z.string().min(8, 'Mínimo 8 caracteres'),
+    password: z
+      .string()
+      .min(8, 'Mínimo 8 caracteres')
+      .regex(/[A-Z]/, 'Debe incluir una mayúscula')
+      .regex(/[a-z]/, 'Debe incluir una minúscula')
+      .regex(/[0-9]/, 'Debe incluir un número'),
     confirmPassword: z.string(),
   })
   .refine((d) => d.password === d.confirmPassword, {
@@ -48,7 +54,7 @@ export function RegisterForm() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<FormData>()
+  } = useForm<FormData>({ resolver: zodResolver(schema) })
 
   async function onSubmit(data: FormData) {
     try {
@@ -109,7 +115,7 @@ export function RegisterForm() {
         autoComplete="new-password"
         placeholder="Mínimo 8 caracteres"
         required
-        helperText="Mínimo 8 caracteres"
+        helperText="Mínimo 8 caracteres con mayúscula, minúscula y número"
         error={errors.password?.message}
         {...register('password')}
       />

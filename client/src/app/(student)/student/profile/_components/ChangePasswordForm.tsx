@@ -21,7 +21,7 @@ const schema = z
 type FormValues = z.infer<typeof schema>
 
 export function ChangePasswordForm() {
-  const { showToast } = useToast()
+  const showToast = useToast()
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormValues>({
     resolver: zodResolver(schema),
   })

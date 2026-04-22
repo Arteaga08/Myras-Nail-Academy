@@ -18,7 +18,7 @@ export function Card({
 }: CardProps) {
   return (
     <div
-      className={['rounded-xl p-6', variants[variant], className]
+      className={['rounded-2xl p-6', variants[variant], className]
         .filter(Boolean)
         .join(' ')}
       {...props}

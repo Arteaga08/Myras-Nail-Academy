@@ -5,6 +5,7 @@ import {
   CaretLeftIcon as CaretLeft,
   ArrowLeftIcon as ArrowLeft,
   ArrowRightIcon as ArrowRight,
+  ListIcon as List,
 } from "@phosphor-icons/react/ssr";
 import { Button } from "@/components/ui/Button";
 import type { Lesson } from "@/hooks/useCourseLessons";
@@ -17,6 +18,7 @@ interface CoursePlayerTopBarProps {
   onNext: () => void;
   hasPrev: boolean;
   hasNext: boolean;
+  onToggleSidebar?: () => void;
 }
 
 export function CoursePlayerTopBar({
@@ -27,6 +29,7 @@ export function CoursePlayerTopBar({
   onNext,
   hasPrev,
   hasNext,
+  onToggleSidebar,
 }: CoursePlayerTopBarProps) {
   return (
     // Fondo Rose 500 con borde sutil más oscuro (rose-600)
@@ -57,6 +60,16 @@ export function CoursePlayerTopBar({
 
       {/* SECCIÓN DERECHA: Botones de Acción Explícitos */}
       <div className="flex items-center gap-3">
+        {onToggleSidebar && (
+          <button
+            type="button"
+            onClick={onToggleSidebar}
+            className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 lg:hidden"
+            aria-label="Mostrar lista de clases"
+          >
+            <List size={20} />
+          </button>
+        )}
         {/* Botón Anterior */}
         <button
           onClick={onPrev}

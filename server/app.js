@@ -12,8 +12,33 @@ const app = express();
 // Trust proxy (for rate limiting, IP detection behind reverse proxy)
 app.set('trust proxy', 1);
 
-// Security headers
-app.use(helmet());
+// Security headers — explicit CSP to allow Stripe + Cloudinary + DiceBear
+const cspDirectives = {
+  defaultSrc: ["'self'"],
+  scriptSrc: ["'self'", 'https://js.stripe.com'],
+  styleSrc: ["'self'", "'unsafe-inline'"],
+  imgSrc: ["'self'", 'data:', 'https://res.cloudinary.com'],
+  connectSrc: [
+    "'self'",
+    process.env.FRONTEND_URL || 'http://localhost:3000',
+    'https://api.stripe.com',
+    'https://api.cloudinary.com',
+  ],
+  frameSrc: ['https://js.stripe.com', 'https://hooks.stripe.com'],
+  objectSrc: ["'none'"],
+  baseUri: ["'self'"],
+  formAction: ["'self'"],
+  frameAncestors: ["'none'"],
+};
+if (process.env.NODE_ENV === 'production') {
+  cspDirectives.upgradeInsecureRequests = [];
+}
+app.use(
+  helmet({
+    contentSecurityPolicy: { directives: cspDirectives },
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+  })
+);
 
 // Rate limiting — layered protection
 const commonLimiterOpts = { standardHeaders: true, legacyHeaders: false };

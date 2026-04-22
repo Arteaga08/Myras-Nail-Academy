@@ -44,7 +44,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem(STORAGE_KEY, token)
     localStorage.setItem(STORAGE_NAME, name)
     localStorage.setItem(STORAGE_EMAIL, email)
-    document.cookie = `mna_session=1; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`
+    const secure = window.location.protocol === 'https:' ? '; Secure' : ''
+    document.cookie = `mna_session=1; path=/; max-age=${60 * 60 * 12}; SameSite=Lax${secure}`
     setAuth({ token, adminName: name, adminEmail: email })
     router.push('/dashboard')
   }

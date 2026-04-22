@@ -7,6 +7,7 @@ import { CameraIcon as Camera, ArrowsClockwiseIcon as Refresh } from '@phosphor-
 import { Button } from '@/components/ui/Button'
 import { useToast } from '@/components/ui/Toast'
 import { studentApiFetch } from '@/lib/studentApi'
+import { CLOUDINARY_CLOUD_NAME, CLOUDINARY_UPLOAD_PRESET } from '@/lib/env'
 import type { StudentProfile } from '@/hooks/useStudentProfile'
 
 const DICEBEAR_OPTIONS = {
@@ -27,7 +28,7 @@ const DICEBEAR_OPTIONS = {
 }
 
 function generateAvatar(seed: string): string {
-  return createAvatar(lorelei, { ...DICEBEAR_OPTIONS, seed }).toDataUri()
+  return createAvatar(lorelei, { ...DICEBEAR_OPTIONS, seed } as unknown as Parameters<typeof createAvatar>[1]).toDataUri()
 }
 
 interface AvatarSectionProps {
@@ -75,15 +76,19 @@ export function AvatarSection({ profile, onSuccess }: AvatarSectionProps) {
     try {
       const formData = new FormData()
       formData.append('file', file)
-      formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET ?? '')
+      formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
 
       const res = await fetch(
-        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+        `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
         { method: 'POST', body: formData }
       )
-      const data = await res.json()
 
-      if (!res.ok) throw new Error(data.error?.message ?? 'Error al subir la imagen')
+      if (!res.ok) {
+        const errBody = await res.json().catch(() => null)
+        throw new Error(errBody?.error?.message ?? 'Error al subir la imagen')
+      }
+
+      const data = await res.json()
 
       await studentApiFetch('/api/auth/me', {
         method: 'PUT',
