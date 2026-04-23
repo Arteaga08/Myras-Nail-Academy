@@ -25,23 +25,27 @@ export function EnrollmentCard({ enrollment }: EnrollmentCardProps) {
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-nude-200 bg-nude-50 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
       {/* Thumbnail */}
-      {courseId.thumbnail ? (
-        <img
-          src={courseId.thumbnail}
-          alt={courseId.title}
-          className="h-44 w-full object-cover"
-        />
-      ) : (
-        <div className="flex h-44 w-full items-center justify-center bg-linear-to-br from-rose-100 to-nude-100">
-          <BookOpen size={40} className="text-rose-400" />
-        </div>
-      )}
+      <Link href={`/cursos/${courseId.slug}`} className="block">
+        {courseId.thumbnail ? (
+          <img
+            src={courseId.thumbnail}
+            alt={courseId.title}
+            className="h-44 w-full object-cover transition-transform duration-300 hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-44 w-full items-center justify-center bg-linear-to-br from-rose-100 to-nude-100">
+            <BookOpen size={40} className="text-rose-400" />
+          </div>
+        )}
+      </Link>
 
       {/* Body */}
       <div className="flex flex-1 flex-col gap-3 p-4">
-        <h3 className="font-display text-sm font-semibold leading-snug text-neutral-900 line-clamp-2">
-          {courseId.title}
-        </h3>
+        <Link href={`/cursos/${courseId.slug}`}>
+          <h3 className="font-display text-sm font-semibold leading-snug text-neutral-900 line-clamp-2 hover:text-rose-600 transition-colors">
+            {courseId.title}
+          </h3>
+        </Link>
 
         {/* Progress bar toward certificate */}
         <div>

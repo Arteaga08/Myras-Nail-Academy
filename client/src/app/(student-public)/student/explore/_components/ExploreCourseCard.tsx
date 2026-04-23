@@ -35,17 +35,19 @@ export function ExploreCourseCard({ course, isEnrolled, onEnrollSuccess }: Explo
     <>
       <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-md">
         {/* Thumbnail */}
-        {course.thumbnail ? (
-          <img
-            src={course.thumbnail}
-            alt={course.title}
-            className="h-44 w-full object-cover"
-          />
-        ) : (
-          <div className="flex h-44 w-full items-center justify-center bg-rose-50">
-            <BookOpen size={40} className="text-rose-300" />
-          </div>
-        )}
+        <Link href={`/cursos/${course.slug}`} className="block">
+          {course.thumbnail ? (
+            <img
+              src={course.thumbnail}
+              alt={course.title}
+              className="h-44 w-full object-cover transition-transform duration-300 hover:scale-105"
+            />
+          ) : (
+            <div className="flex h-44 w-full items-center justify-center bg-rose-50">
+              <BookOpen size={40} className="text-rose-300" />
+            </div>
+          )}
+        </Link>
 
         {/* Body */}
         <div className="flex flex-col gap-3 p-4">
@@ -55,9 +57,11 @@ export function ExploreCourseCard({ course, isEnrolled, onEnrollSuccess }: Explo
           )}
 
           {/* Title */}
-          <h3 className="font-display text-sm font-semibold leading-snug text-neutral-900 line-clamp-2">
-            {course.title}
-          </h3>
+          <Link href={`/cursos/${course.slug}`}>
+            <h3 className="font-display text-sm font-semibold leading-snug text-neutral-900 line-clamp-2 hover:text-rose-600 transition-colors">
+              {course.title}
+            </h3>
+          </Link>
 
           {/* Description */}
           {course.shortDescription && (
@@ -89,7 +93,7 @@ export function ExploreCourseCard({ course, isEnrolled, onEnrollSuccess }: Explo
           {isEnrolled ? (
             <div className="flex items-center gap-2">
               <Badge color="success">Ya inscrita ✓</Badge>
-              <Link href={`/student/courses/${course._id}`}>
+              <Link href={`/cursos/${course.slug}`}>
                 <Button variant="ghost" size="sm">Ir al curso</Button>
               </Link>
             </div>

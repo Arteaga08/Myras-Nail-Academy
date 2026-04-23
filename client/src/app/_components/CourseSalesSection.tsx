@@ -2,12 +2,29 @@
 
 import Link from "next/link";
 import {
-  SparkleIcon as Sparkle,
   ArrowRightIcon as ArrowRight,
   HandHeartIcon as HandHeart,
 } from "@phosphor-icons/react/ssr";
+import { useFeaturedCourse } from "@/hooks/useFeaturedCourse";
+import { formatCurrency } from "@/lib/formatters";
 
 export function CourseSalesSection() {
+  const { course, isLoading } = useFeaturedCourse();
+
+  if (isLoading) {
+    return (
+      <section id="course-sales" className="bg-rose-100 px-6 py-20 lg:py-32">
+        <div className="mx-auto max-w-7xl flex items-center justify-center">
+          <div className="h-10 w-10 animate-spin rounded-full border-2 border-rose-500 border-t-transparent" />
+        </div>
+      </section>
+    );
+  }
+
+  if (!course) return null;
+
+  const effectivePrice = course.isOnSale ? course.salePrice : course.price;
+
   return (
     <section id="course-sales" className="bg-rose-100 px-6 py-20 lg:py-32">
       <div className="mx-auto max-w-7xl">
@@ -184,42 +201,35 @@ export function CourseSalesSection() {
             {/* COLUMNA DERECHA: Copy Dinámico */}
             <div className="flex flex-col text-center lg:text-left">
               {/* Título ajustado para no romperse torpemente en móvil */}
-              <h1 className="font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
-                Especialización en <br />
-                <span className="text-rose-500">Manicura Rusa.</span>
-              </h1>
+              <Link href={`/cursos/${course.slug}`}>
+                <h1 className="font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-neutral-900 transition-colors hover:text-rose-600 sm:text-5xl lg:text-6xl">
+                  {course.title}
+                </h1>
+              </Link>
 
-              {/* PÁRRAFO DINÁMICO: Corto en celular, completo en escritorio */}
-              <p className="mt-6 text-[15px] leading-relaxed text-neutral-600 sm:mt-8 sm:text-lg sm:leading-loose">
-                <span className="sm:hidden">
-                  Transforma tu técnica. Logra acabados impecables y de lujo que
-                  tus clientas amarán.
-                </span>
-                <span className="hidden sm:inline">
-                  Transforma tu servicio. Domina el corte de cutícula con tijera
-                  y torno, logra la nivelación impecable y garantiza acabados
-                  limpios, duraderos y de lujo que tus clientas amarán.
-                </span>
-              </p>
+              {course.shortDescription && (
+                <p className="mt-6 text-[15px] leading-relaxed text-neutral-600 sm:mt-8 sm:text-lg sm:leading-loose">
+                  {course.shortDescription}
+                </p>
+              )}
 
               {/* Módulo de Precio */}
               <div className="mt-10 flex flex-col items-center justify-between gap-6 rounded-3xl bg-rose-50/50 p-6 ring-1 ring-rose-100 sm:mt-12 sm:flex-row sm:gap-8 sm:p-8 lg:p-10">
                 <div className="flex flex-col items-center sm:items-start">
-                  <span className="text-sm font-semibold text-rose-400 line-through">
-                    $1,499 MXN
-                  </span>
+                  {course.isOnSale && (
+                    <span className="text-sm font-semibold text-rose-400 line-through">
+                      {formatCurrency(course.price)}
+                    </span>
+                  )}
                   <div className="mt-1 flex items-baseline gap-1.5">
                     <span className="font-display text-4xl font-extrabold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
-                      $999
-                    </span>
-                    <span className="text-base font-bold text-neutral-500 sm:text-lg">
-                      MXN
+                      {formatCurrency(effectivePrice)}
                     </span>
                   </div>
                 </div>
 
                 <Link
-                  href="/course/perfect-russian-manicure"
+                  href={`/cursos/${course.slug}`}
                   className="group flex h-14 w-full items-center justify-center gap-2 rounded-full bg-rose-500 px-8 text-[15px] font-bold text-white shadow-lg shadow-rose-500/25 outline-none transition-all duration-200 hover:-translate-y-0.5 hover:bg-rose-600 hover:shadow-xl hover:shadow-rose-500/30 active:translate-y-0 active:scale-[0.98] active:bg-rose-700 sm:w-auto sm:px-10 lg:h-16 lg:text-base"
                 >
                   INSCRÍBETE AHORA

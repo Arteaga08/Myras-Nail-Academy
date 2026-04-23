@@ -53,6 +53,27 @@ const getCourseById = asyncHandler(async (req, res) => {
   res.status(200).json({ status: 'success', data: { ...course.toJSON(), lessons } });
 });
 
+// @desc    Get single published course by slug with public lesson list
+// @route   GET /api/courses/slug/:slug
+// @access  Public
+const getCourseBySlug = asyncHandler(async (req, res) => {
+  const course = await Course.findOne({ slug: req.params.slug, isPublished: true }).populate(
+    'category',
+    'name slug'
+  );
+
+  if (!course) {
+    res.status(404);
+    throw new Error('Course not found');
+  }
+
+  const lessons = await Lesson.find({ courseId: course._id })
+    .select('title order duration isFree')
+    .sort({ order: 1 });
+
+  res.status(200).json({ status: 'success', data: { ...course.toJSON(), lessons } });
+});
+
 // ─── ADMIN ───────────────────────────────────────────────────────────────────
 
 // @desc    Get all courses (including unpublished)
@@ -150,6 +171,7 @@ const archiveCourse = asyncHandler(async (req, res) => {
 export {
   getPublishedCourses,
   getCourseById,
+  getCourseBySlug,
   adminGetAllCourses,
   createCourse,
   updateCourse,

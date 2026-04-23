@@ -30,6 +30,8 @@ interface LoginResponse {
 export function StudentLoginForm() {
   const { login } = useStudentAuth()
   const toast = useToast()
+  const searchParams = useSearchParams()
+  const returnUrl = searchParams.get('return') ?? undefined
 
   const {
     register,
@@ -46,7 +48,7 @@ export function StudentLoginForm() {
         skipAuth: true,
       })
       const { _id, firstName, lastName, email, token } = res.data
-      login(token, `${firstName} ${lastName}`, email, _id)
+      login(token, `${firstName} ${lastName}`, email, _id, returnUrl)
     } catch (err: unknown) {
       const error = err as Error & { status?: number }
       if (error.status === 401) {

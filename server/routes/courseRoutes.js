@@ -1,5 +1,5 @@
 import express from 'express';
-import { getPublishedCourses, getCourseById } from '../controllers/courseController.js';
+import { getPublishedCourses, getCourseById, getCourseBySlug } from '../controllers/courseController.js';
 import { getCourseLessons, markLessonWatched } from '../controllers/lessonController.js';
 import { getCourseReviews } from '../controllers/reviewController.js';
 import { protect, optionalProtect } from '../middleware/authMiddleware.js';
@@ -10,6 +10,7 @@ import { idParamSchema } from '../validators/objectId.validator.js';
 const router = express.Router();
 
 router.get('/', validate(paginationSchema, 'query'), getPublishedCourses);
+router.get('/slug/:slug', getCourseBySlug);
 router.get('/:id', validate(idParamSchema, 'params'), getCourseById);
 
 // Lessons — optionally authenticated (enrolled = full content, anonymous = metadata)
