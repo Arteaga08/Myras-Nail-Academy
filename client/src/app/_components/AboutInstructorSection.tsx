@@ -35,7 +35,7 @@ export function AboutInstructorSection() {
               y1="2"
               x2="14"
               y2="26"
-              stroke="#E6C068"
+              stroke="#8B7EC8"
               strokeWidth="2.5"
               strokeLinecap="round"
             />
@@ -44,11 +44,11 @@ export function AboutInstructorSection() {
               y1="14"
               x2="26"
               y2="14"
-              stroke="#E6C068"
+              stroke="#8B7EC8"
               strokeWidth="2.5"
               strokeLinecap="round"
             />
-            <circle cx="14" cy="14" r="3" fill="#C9A24C" />
+            <circle cx="14" cy="14" r="3" fill="#7060BC" />
           </svg>
         </div>
 
@@ -144,7 +144,7 @@ export function AboutInstructorSection() {
               y1="2"
               x2="14"
               y2="26"
-              stroke="#E6C068"
+              stroke="#8B7EC8"
               strokeWidth="2.5"
               strokeLinecap="round"
             />
@@ -153,11 +153,11 @@ export function AboutInstructorSection() {
               y1="14"
               x2="26"
               y2="14"
-              stroke="#E6C068"
+              stroke="#8B7EC8"
               strokeWidth="2.5"
               strokeLinecap="round"
             />
-            <circle cx="14" cy="14" r="3" fill="#C9A24C" />
+            <circle cx="14" cy="14" r="3" fill="#7060BC" />
           </svg>
         </div>
       </div>
@@ -208,7 +208,7 @@ export function AboutInstructorSection() {
             </div>
 
             {/* Bloque flotante de "Calificación" */}
-            <div className="absolute -bottom-4 right-2 z-20 flex items-center gap-2 rounded-2xl bg-white p-3 shadow-xl shadow-rose-900/5 sm:-bottom-6 sm:-right-4 sm:gap-3 sm:p-4 lg:-right-12">
+            <div className="absolute -bottom-4 right-2 z-20 flex items-center gap-2 rounded-2xl bg-white p-3 shadow-xl sm:-bottom-6 sm:-right-4 sm:gap-3 sm:p-4 lg:-right-12">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-rose-50 text-rose-500">
                 <GraduationCap size={24} weight="fill" />
               </div>

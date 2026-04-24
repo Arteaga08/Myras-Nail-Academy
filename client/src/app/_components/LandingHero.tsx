@@ -81,7 +81,7 @@ export function LandingHero({ imageUrl }: LandingHeroProps = {}) {
               y1="2"
               x2="14"
               y2="26"
-              stroke="#E6C068"
+              stroke="#8B7EC8"
               strokeWidth="2.5"
               strokeLinecap="round"
             />
@@ -90,7 +90,7 @@ export function LandingHero({ imageUrl }: LandingHeroProps = {}) {
               y1="14"
               x2="26"
               y2="14"
-              stroke="#E6C068"
+              stroke="#8B7EC8"
               strokeWidth="2.5"
               strokeLinecap="round"
             />
@@ -99,7 +99,7 @@ export function LandingHero({ imageUrl }: LandingHeroProps = {}) {
               y1="5"
               x2="23"
               y2="23"
-              stroke="#E6C068"
+              stroke="#8B7EC8"
               strokeWidth="1.5"
               strokeLinecap="round"
             />
@@ -108,11 +108,11 @@ export function LandingHero({ imageUrl }: LandingHeroProps = {}) {
               y1="5"
               x2="5"
               y2="23"
-              stroke="#E6C068"
+              stroke="#8B7EC8"
               strokeWidth="1.5"
               strokeLinecap="round"
             />
-            <circle cx="14" cy="14" r="3" fill="#C9A24C" />
+            <circle cx="14" cy="14" r="3" fill="#7060BC" />
           </svg>
         </div>
 
