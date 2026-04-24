@@ -79,7 +79,7 @@ export function CourseSalesCtaSection() {
         <div className="mt-12 flex items-center justify-center">
           <a
             href="#course-sales"
-            className="group flex h-16 items-center gap-2.5 rounded-full bg-white px-10 text-lg font-bold text-rose-600 shadow-xl shadow-rose-950/20 transition-all hover:scale-105 hover:bg-rose-50 active:scale-95"
+            className="group flex h-16 items-center gap-2.5 rounded-full bg-white px-10 text-lg font-bold text-rose-600 shadow-xl transition-all hover:scale-105 hover:bg-rose-50 active:scale-95"
           >
             INICIAR MI TRANSFORMACIÓN
             <ArrowRight

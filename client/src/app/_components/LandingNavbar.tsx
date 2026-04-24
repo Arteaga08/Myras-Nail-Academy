@@ -24,7 +24,7 @@ export function LandingNavbar() {
 
   return (
     <div className="fixed left-0 right-0 top-4 z-50 w-full px-4 sm:px-6 lg:px-8">
-      <header className="mx-auto flex h-16 max-w-7xl items-center justify-between rounded-full border-nude-300 bg-rose-400 px-6 shadow-xl shadow-rose-400/30 lg:h-18 lg:px-10">
+      <header className="mx-auto flex h-16 max-w-7xl items-center justify-between rounded-full border-nude-300 bg-rose-400 px-6 shadow-xl lg:h-18 lg:px-10">
         {/* Logo / Link al Inicio */}
         <Link
           href="/"

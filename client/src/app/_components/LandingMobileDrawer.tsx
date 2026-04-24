@@ -228,7 +228,7 @@ export function LandingMobileDrawer({
             <a
               href="/student/register"
               onClick={onClose}
-              className="flex w-full items-center justify-center rounded-full bg-white px-6 py-4 text-[15px] font-bold text-rose-600 shadow-lg shadow-rose-900/10 transition-all duration-200 hover:bg-rose-50 active:scale-95"
+              className="flex w-full items-center justify-center rounded-full bg-white px-6 py-4 text-[15px] font-bold text-rose-600 shadow-lg transition-all duration-200 hover:bg-rose-50 active:scale-95"
             >
               Inscríbete Ahora
             </a>
