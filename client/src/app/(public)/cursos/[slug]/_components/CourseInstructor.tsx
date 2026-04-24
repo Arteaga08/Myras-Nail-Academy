@@ -8,7 +8,7 @@ import {
 
 export function CourseInstructor() {
   return (
-    <div className="relative overflow-hidden rounded-[2.5rem] bg-white p-8 shadow-xl shadow-rose-900/5 ring-1 ring-rose-100/50 sm:p-12 lg:rounded-[3.5rem] lg:p-16">
+    <div className="relative overflow-hidden rounded-[2.5rem] bg-white p-8 shadow-xl ring-1 ring-rose-100/50 sm:p-12 lg:rounded-[3.5rem] lg:p-16">
       {/* 1. ASSET REUBICADO: Chispa en la esquina superior izquierda (No tapa el texto) */}
       <div className="pointer-events-none absolute -left-2 -top-2 z-0 opacity-30 sm:left-2 sm:top-2 lg:left-4 lg:top-4">
         <Sparkle
@@ -98,7 +98,7 @@ export function CourseInstructor() {
 
             {/* CTA Curriculum */}
             <div className="mt-4 flex justify-center sm:justify-start">
-              <button className="group flex h-14 w-full items-center justify-center gap-3 rounded-full bg-rose-500 px-10 text-[15px] font-bold text-white shadow-lg shadow-rose-500/25 transition-all duration-200 hover:-translate-y-1 hover:bg-rose-600 active:scale-[0.98] sm:w-auto sm:text-base">
+              <button className="group flex h-14 w-full items-center justify-center gap-3 rounded-full bg-rose-500 px-10 text-[15px] font-bold text-white shadow-lg transition-all duration-200 hover:-translate-y-1 hover:bg-rose-600 active:scale-[0.98] sm:w-auto sm:text-base">
                 <FileText size={22} weight="bold" />
                 VER CURRICULUM
               </button>
@@ -147,7 +147,7 @@ export function CourseInstructor() {
             </div>
 
             {/* Marco de Imagen / Placeholder */}
-            <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-rose-50 text-rose-200 shadow-2xl shadow-rose-900/10 ring-8 ring-white sm:h-56 sm:w-56 lg:h-80 lg:w-80">
+            <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-rose-50 text-rose-200 shadow-2xl ring-8 ring-white sm:h-56 sm:w-56 lg:h-80 lg:w-80">
               <User size={90} weight="thin" className="sm:size-32 lg:size-44" />
 
               <div className="absolute bottom-2 right-2 flex h-12 w-12 items-center justify-center rounded-full bg-lavender-400 text-white shadow-lg ring-4 ring-white lg:bottom-6 lg:right-6 lg:h-20 lg:w-20">

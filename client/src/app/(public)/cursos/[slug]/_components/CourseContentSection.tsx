@@ -57,7 +57,7 @@ export function CourseContentSection({ course }: CourseContentProps) {
             {/* TARJETA 1: Descripción */}
             {course.description && (
               // PADDINGS MEJORADOS: p-6 en móvil, p-12 en tablet, p-16 en desktop
-              <div className="relative rounded-4xl bg-white p-6 shadow-xl shadow-rose-900/5 ring-1 ring-rose-100/50 sm:rounded-[2.5rem] sm:p-12 lg:rounded-[3.5rem] lg:p-16">
+              <div className="relative rounded-4xl bg-white p-6 shadow-xl ring-1 ring-rose-100/50 sm:rounded-[2.5rem] sm:p-12 lg:rounded-[3.5rem] lg:p-16">
                 {/* Decoraciones Animadas */}
                 <div className="pointer-events-none absolute -right-4 -top-4 z-0 scale-50 opacity-20 sm:-right-6 sm:-top-6 sm:scale-75 lg:-right-4 lg:-top-4 lg:scale-100 lg:opacity-30">
                   <svg
@@ -182,7 +182,7 @@ export function CourseContentSection({ course }: CourseContentProps) {
 
             {/* TARJETA 2: Temario */}
             {lessons.length > 0 && (
-              <div className="relative rounded-4xl bg-white p-6 shadow-xl shadow-rose-900/5 ring-1 ring-rose-100/50 sm:rounded-[2.5rem] sm:p-12 lg:rounded-[3.5rem] lg:p-16">
+              <div className="relative rounded-4xl bg-white p-6 shadow-xl ring-1 ring-rose-100/50 sm:rounded-[2.5rem] sm:p-12 lg:rounded-[3.5rem] lg:p-16">
                 {/* Decoraciones Animadas */}
                 <div className="pointer-events-none absolute -left-2 top-[30%] z-0 scale-50 opacity-30 sm:left-0 sm:scale-75 lg:-left-6 lg:scale-100 lg:opacity-40">
                   <svg
@@ -200,7 +200,7 @@ export function CourseContentSection({ course }: CourseContentProps) {
                       y1="2"
                       x2="14"
                       y2="26"
-                      stroke="#E6C068"
+                      stroke="#8B7EC8"
                       strokeWidth="2.5"
                       strokeLinecap="round"
                     />
@@ -209,7 +209,7 @@ export function CourseContentSection({ course }: CourseContentProps) {
                       y1="14"
                       x2="26"
                       y2="14"
-                      stroke="#E6C068"
+                      stroke="#8B7EC8"
                       strokeWidth="2.5"
                       strokeLinecap="round"
                     />
@@ -218,7 +218,7 @@ export function CourseContentSection({ course }: CourseContentProps) {
                       y1="5"
                       x2="23"
                       y2="23"
-                      stroke="#E6C068"
+                      stroke="#8B7EC8"
                       strokeWidth="1.5"
                       strokeLinecap="round"
                     />
@@ -227,11 +227,11 @@ export function CourseContentSection({ course }: CourseContentProps) {
                       y1="5"
                       x2="5"
                       y2="23"
-                      stroke="#E6C068"
+                      stroke="#8B7EC8"
                       strokeWidth="1.5"
                       strokeLinecap="round"
                     />
-                    <circle cx="14" cy="14" r="3" fill="#C9A24C" />
+                    <circle cx="14" cy="14" r="3" fill="#7060BC" />
                   </svg>
                 </div>
                 <div className="pointer-events-none absolute -bottom-4 -right-4 z-0 scale-50 opacity-30 sm:-bottom-6 sm:-right-6 sm:scale-[0.60] lg:bottom-0 lg:right-0 lg:scale-75 lg:opacity-40">
@@ -348,7 +348,7 @@ export function CourseContentSection({ course }: CourseContentProps) {
           <div className="lg:col-span-4 lg:self-stretch">
             <div className="sticky top-32 flex flex-col gap-6">
               {/* CÁPSULA 1: Precio y CTA */}
-              <div className="flex flex-col gap-6 rounded-4xl bg-rose-500 p-6 shadow-2xl shadow-rose-600/20 ring-1 ring-rose-400 sm:gap-8 sm:rounded-[2.5rem] sm:p-8 lg:rounded-[3rem] lg:p-10">
+              <div className="flex flex-col gap-6 rounded-4xl bg-rose-500 p-6 shadow-2xl ring-1 ring-rose-400 sm:gap-8 sm:rounded-[2.5rem] sm:p-8 lg:rounded-[3rem] lg:p-10">
                 <div className="flex flex-col gap-2">
                   <span className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-rose-200 sm:text-[11px]">
                     Inscripción Abierta
@@ -373,7 +373,7 @@ export function CourseContentSection({ course }: CourseContentProps) {
 
                 <button
                   onClick={handleBuyClick}
-                  className="group flex h-14 w-full items-center justify-center gap-2 rounded-full bg-white text-sm font-bold text-rose-600 shadow-xl shadow-rose-900/20 transition-all hover:-translate-y-1 hover:bg-rose-50 sm:h-16 sm:text-base"
+                  className="group flex h-14 w-full items-center justify-center gap-2 rounded-full bg-white text-sm font-bold text-rose-600 shadow-xl transition-all hover:-translate-y-1 hover:bg-rose-50 sm:h-16 sm:text-base"
                 >
                   Inscríbete Ahora
                   <ArrowRight
@@ -385,7 +385,7 @@ export function CourseContentSection({ course }: CourseContentProps) {
               </div>
 
               {/* CÁPSULA 2: Información Técnica */}
-              <div className="flex flex-col gap-5 rounded-4xl bg-white p-6 shadow-xl shadow-rose-900/5 ring-1 ring-rose-100/50 sm:gap-6 sm:rounded-[2.5rem] sm:p-8 lg:rounded-[3rem] lg:p-10">
+              <div className="flex flex-col gap-5 rounded-4xl bg-white p-6 shadow-xl ring-1 ring-rose-100/50 sm:gap-6 sm:rounded-[2.5rem] sm:p-8 lg:rounded-[3rem] lg:p-10">
                 <div className="flex flex-col gap-1 border-b border-rose-50 pb-4 sm:pb-5">
                   <div className="flex items-center gap-2 text-rose-400">
                     <BookOpen
@@ -441,7 +441,7 @@ export function CourseContentSection({ course }: CourseContentProps) {
 
       {/* MOBILE STICKY BAR */}
       {showStickyBar && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between gap-4 border-t border-rose-100 bg-white px-6 py-4 shadow-2xl shadow-rose-900/10 lg:hidden">
+        <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between gap-4 border-t border-rose-100 bg-white px-6 py-4 shadow-2xl lg:hidden">
           <div className="flex flex-col">
             {course.isOnSale && (
               <span className="text-xs font-medium text-stone-400 line-through">
@@ -457,7 +457,7 @@ export function CourseContentSection({ course }: CourseContentProps) {
           </div>
           <button
             onClick={handleBuyClick}
-            className="group flex h-12 items-center justify-center gap-2 rounded-full bg-rose-500 px-6 text-sm font-bold text-white shadow-lg shadow-rose-500/30 transition-all hover:bg-rose-600"
+            className="group flex h-12 items-center justify-center gap-2 rounded-full bg-rose-500 px-6 text-sm font-bold text-white shadow-lg transition-all hover:bg-rose-600"
           >
             Inscríbete
             <ArrowRight
