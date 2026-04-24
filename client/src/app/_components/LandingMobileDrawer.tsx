@@ -59,7 +59,7 @@ export function LandingMobileDrawer({
                 y1="2"
                 x2="14"
                 y2="26"
-                stroke="#E6C068"
+                stroke="#8B7EC8"
                 strokeWidth="2"
                 strokeLinecap="round"
               />
@@ -68,17 +68,17 @@ export function LandingMobileDrawer({
                 y1="14"
                 x2="26"
                 y2="14"
-                stroke="#E6C068"
+                stroke="#8B7EC8"
                 strokeWidth="2"
                 strokeLinecap="round"
               />
-              <circle cx="14" cy="14" r="3" fill="#C9A24C" />
+              <circle cx="14" cy="14" r="3" fill="#7060BC" />
               <line
                 x1="50"
                 y1="20"
                 x2="50"
                 y2="44"
-                stroke="#E6C068"
+                stroke="#8B7EC8"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 transform="rotate(15 50 32)"
@@ -88,7 +88,7 @@ export function LandingMobileDrawer({
                 y1="32"
                 x2="62"
                 y2="32"
-                stroke="#E6C068"
+                stroke="#8B7EC8"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 transform="rotate(15 50 32)"
@@ -97,7 +97,7 @@ export function LandingMobileDrawer({
                 cx="50"
                 cy="32"
                 r="3.5"
-                fill="#C9A24C"
+                fill="#7060BC"
                 transform="rotate(15 50 32)"
               />
               <line
@@ -105,7 +105,7 @@ export function LandingMobileDrawer({
                 y1="2"
                 x2="86"
                 y2="26"
-                stroke="#E6C068"
+                stroke="#8B7EC8"
                 strokeWidth="2"
                 strokeLinecap="round"
               />
@@ -114,11 +114,11 @@ export function LandingMobileDrawer({
                 y1="14"
                 x2="98"
                 y2="14"
-                stroke="#E6C068"
+                stroke="#8B7EC8"
                 strokeWidth="2"
                 strokeLinecap="round"
               />
-              <circle cx="86" cy="14" r="3" fill="#C9A24C" />
+              <circle cx="86" cy="14" r="3" fill="#7060BC" />
             </svg>
           </div>
 
