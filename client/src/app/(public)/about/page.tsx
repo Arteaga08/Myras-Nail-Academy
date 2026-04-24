@@ -8,7 +8,7 @@ import { FlowerFrame6Petals } from "@/components/ui/DecorativeAssets";
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-white pt-24">
+    <main className="relative min-h-dvh overflow-hidden bg-white pt-24">
       {/* --- ASSETS FLOTANTES EXTRA --- */}
 
       {/* Destello Top Izquierda */}

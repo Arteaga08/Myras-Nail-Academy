@@ -37,7 +37,7 @@ const SECOND_MARQUEE_ITEMS: MarqueeItem[] = [
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-dvh">
       <LandingHero />
       <InfiniteMarquee
         items={FIRST_MARQUEE_ITEMS}

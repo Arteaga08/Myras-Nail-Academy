@@ -133,7 +133,7 @@ export default function CoursePlayerPage({
   const isWatched = completedLessons.includes(currentLesson._id)
 
   return (
-    <div className="-m-4 flex flex-col md:-m-6 lg:-m-8" style={{ height: 'calc(100vh - 4rem)' }}>
+    <div className="-m-4 flex flex-col md:-m-6 lg:-m-8" style={{ height: 'calc(100dvh - 4rem)' }}>
       {/* Top bar */}
       <CoursePlayerTopBar
         currentLesson={currentLesson}
