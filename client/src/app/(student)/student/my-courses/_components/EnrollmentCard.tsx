@@ -51,7 +51,7 @@ export function EnrollmentCard({ enrollment }: EnrollmentCardProps) {
         <div>
           <div className="mb-1 flex items-center justify-between">
             <span className="text-xs text-neutral-400">Progreso al certificado</span>
-            <span className={['text-xs font-semibold', isCompleted ? 'text-gold-500' : 'text-rose-500'].join(' ')}>
+            <span className={['text-xs font-semibold', isCompleted ? 'text-lavender-400' : 'text-rose-500'].join(' ')}>
               {progressPercent}%
             </span>
           </div>
@@ -60,7 +60,7 @@ export function EnrollmentCard({ enrollment }: EnrollmentCardProps) {
               className={[
                 'h-full rounded-full transition-all duration-500',
                 isCompleted
-                  ? 'bg-linear-to-r from-gold-400 to-gold-500'
+                  ? 'bg-linear-to-r from-lavender-400 to-lavender-500'
                   : 'bg-linear-to-r from-rose-400 to-rose-500',
               ].join(' ')}
               style={{ width: `${progressPercent}%` }}
@@ -92,9 +92,9 @@ export function EnrollmentCard({ enrollment }: EnrollmentCardProps) {
 
         {/* Certificate section — only when completed */}
         {isCompleted && (
-          <div className="mt-1 flex items-center justify-between gap-3 rounded-xl border border-gold-400/40 bg-linear-to-r from-nude-50 to-nude-100 p-3">
+          <div className="mt-1 flex items-center justify-between gap-3 rounded-xl border border-lavender-200/60 bg-linear-to-r from-nude-50 to-nude-100 p-3">
             <div className="flex items-center gap-2">
-              <Certificate size={20} weight="fill" className="shrink-0 text-gold-500" />
+              <Certificate size={20} weight="fill" className="shrink-0 text-lavender-400" />
               <div>
                 <p className="text-xs font-semibold text-neutral-800">¡Certificado disponible!</p>
                 {completedAt && (

@@ -59,7 +59,7 @@ export function CourseSalesCtaSection() {
       {/* relative z-30 max-w-4xl px-6 py-20 lg:py-28 */}
       <div className="relative z-30 mx-auto max-w-4xl px-6 py-20 lg:py-28 text-white">
         {/* Tagline Sofisticado (Established font-display hierarchy) */}
-        <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-gold-300">
+        <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-lavender-200">
           Tu momento es ahora.
         </p>
 

@@ -71,7 +71,7 @@ export function ExploreCourseCard({ course, isEnrolled, onEnrollSuccess }: Explo
           {/* Rating */}
           {course.reviewCount > 0 && (
             <div className="flex items-center gap-1">
-              <Star size={14} weight="fill" className="text-gold-500" />
+              <Star size={14} weight="fill" className="text-lavender-400" />
               <span className="text-xs font-semibold text-neutral-700">{course.averageRating.toFixed(1)}</span>
               <span className="text-xs text-neutral-400">({course.reviewCount} reseñas)</span>
             </div>

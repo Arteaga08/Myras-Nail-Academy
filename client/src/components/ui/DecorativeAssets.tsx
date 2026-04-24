@@ -92,6 +92,60 @@ export function NailAccent({ size = 26, className = '' }: AssetProps) {
 }
 
 /* ──────────────────────────────────────────────
+   FlowerFrame6Petals – Spinning lavender frame with photo center
+   (used in About, Home instructor sections)
+   ────────────────────────────────────────────── */
+interface FlowerFrameProps {
+  size?: number
+  photoContent?: React.ReactNode
+  className?: string
+}
+
+export function FlowerFrame6Petals({ size = 400, photoContent, className }: FlowerFrameProps) {
+  const photoSize = Math.round(size * 0.56)
+  const borderSize = Math.round(size * 0.01) * 4
+
+  return (
+    <div
+      className={`relative flex items-center justify-center pointer-events-none ${className ?? ''}`}
+      style={{
+        width: size,
+        height: size,
+        animation: 'floatA 8s ease-in-out infinite',
+      }}
+    >
+      <svg
+        viewBox="0 0 200 200"
+        width={size}
+        height={size}
+        fill="none"
+        className="absolute inset-0"
+        style={{ animation: 'spin 45s linear infinite' }}
+        aria-hidden="true"
+      >
+        <ellipse cx="100" cy="40" rx="30" ry="36" fill="#BDB4E0" opacity="0.85" />
+        <ellipse cx="100" cy="40" rx="30" ry="36" fill="#BDB4E0" opacity="0.85" transform="rotate(60 100 100)" />
+        <ellipse cx="100" cy="40" rx="30" ry="36" fill="#BDB4E0" opacity="0.85" transform="rotate(120 100 100)" />
+        <ellipse cx="100" cy="40" rx="30" ry="36" fill="#BDB4E0" opacity="0.85" transform="rotate(180 100 100)" />
+        <ellipse cx="100" cy="40" rx="30" ry="36" fill="#BDB4E0" opacity="0.85" transform="rotate(240 100 100)" />
+        <ellipse cx="100" cy="40" rx="30" ry="36" fill="#BDB4E0" opacity="0.85" transform="rotate(300 100 100)" />
+      </svg>
+
+      <div
+        className="relative z-10 overflow-hidden rounded-full flex items-center justify-center bg-rose-50"
+        style={{
+          width: photoSize,
+          height: photoSize,
+          border: `${borderSize}px solid white`,
+        }}
+      >
+        {photoContent}
+      </div>
+    </div>
+  )
+}
+
+/* ──────────────────────────────────────────────
    CompletionBadge – Stylized check with petals
    (replaces generic CheckCircle for completed lessons)
    ────────────────────────────────────────────── */

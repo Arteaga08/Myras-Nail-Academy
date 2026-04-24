@@ -256,7 +256,7 @@ export function AboutInstructorSection() {
             {/* Stats Grid */}
             <div className="mt-8 grid grid-cols-2 gap-6 border-t border-rose-300 pt-8 sm:grid-cols-3 lg:mt-10 lg:pt-10">
               <div className="flex flex-col items-center lg:items-start">
-                <div className="mb-2 text-gold-500">
+                <div className="mb-2 text-lavender-400">
                   <Star size={28} weight="duotone" />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-rose-900">
