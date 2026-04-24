@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { LandingNavbar } from "./_components/LandingNavbar";
-import { LandingHero } from "./_components/LandingHero";
-import { InfiniteMarquee } from "./_components/InfiniteMarquee";
-import { CourseSalesSection } from "./_components/CourseSalesSection";
-import { AboutInstructorSection } from "./_components/AboutInstructorSection";
-import { PortfolioShowcase } from "./_components/PortfolioShowcase";
-import { CourseSalesCtaSection } from "./_components/CourseSalesCtaSection";
-import { LandingFooter } from "./_components/LandingFooter";
-import type { MarqueeItem } from "./_components/landing.types";
+import { LandingHero } from "@/app/_components/LandingHero";
+import { InfiniteMarquee } from "@/app/_components/InfiniteMarquee";
+import { CourseSalesSection } from "@/app/_components/CourseSalesSection";
+import { AboutInstructorSection } from "@/app/_components/AboutInstructorSection";
+import { PortfolioShowcase } from "@/app/_components/PortfolioShowcase";
+import { CourseSalesCtaSection } from "@/app/_components/CourseSalesCtaSection";
+import type { MarqueeItem } from "@/app/_components/landing.types";
 
 export const metadata: Metadata = {
   title: "Myra's Nail Academy — Aprende el Arte de las Uñas",
@@ -40,7 +38,6 @@ const SECOND_MARQUEE_ITEMS: MarqueeItem[] = [
 export default function LandingPage() {
   return (
     <main className="min-h-screen">
-      <LandingNavbar />
       <LandingHero />
       <InfiniteMarquee
         items={FIRST_MARQUEE_ITEMS}
@@ -58,7 +55,6 @@ export default function LandingPage() {
       />
       <PortfolioShowcase />
       <CourseSalesCtaSection />
-      <LandingFooter />
     </main>
   );
 }

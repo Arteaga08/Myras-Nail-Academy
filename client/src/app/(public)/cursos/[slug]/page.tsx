@@ -42,11 +42,11 @@ export default function CoursePage({ params }: CoursePageProps) {
       <CourseHero course={course} />
 
       <CourseContentSection course={course} />
-      <div className="mx-auto flex max-w-350 flex-col gap-20 px-4 pb-32 sm:px-6 lg:gap-32 lg:pb-64">
+      <div className="mx-auto flex max-w-350 flex-col gap-8 px-4 pb-12 sm:px-6 lg:gap-12 lg:pb-20">
         <CourseInstructor />
         <CourseCertificate />
-        <CourseSalesCtaSection />
       </div>
+      <CourseSalesCtaSection />
     </main>
   );
 }

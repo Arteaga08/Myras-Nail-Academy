@@ -1,0 +1,11 @@
+{"type":"server-started","port":49759,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:49759","screen_dir":"/Users/manuelarteaga/Documents/myras-nail-academy/.superpowers/brainstorm/77955-1776992059/content","state_dir":"/Users/manuelarteaga/Documents/myras-nail-academy/.superpowers/brainstorm/77955-1776992059/state"}
+{"type":"screen-added","file":"/Users/manuelarteaga/Documents/myras-nail-academy/.superpowers/brainstorm/77955-1776992059/content/design-colors.html"}
+{"type":"screen-added","file":"/Users/manuelarteaga/Documents/myras-nail-academy/.superpowers/brainstorm/77955-1776992059/content/design-typography.html"}
+{"type":"screen-added","file":"/Users/manuelarteaga/Documents/myras-nail-academy/.superpowers/brainstorm/77955-1776992059/content/design-components.html"}
+{"type":"screen-added","file":"/Users/manuelarteaga/Documents/myras-nail-academy/.superpowers/brainstorm/77955-1776992059/content/design-components-v2.html"}
+{"type":"screen-added","file":"/Users/manuelarteaga/Documents/myras-nail-academy/.superpowers/brainstorm/77955-1776992059/content/design-assets.html"}
+{"type":"screen-added","file":"/Users/manuelarteaga/Documents/myras-nail-academy/.superpowers/brainstorm/77955-1776992059/content/design-assets-v2.html"}
+{"type":"screen-added","file":"/Users/manuelarteaga/Documents/myras-nail-academy/.superpowers/brainstorm/77955-1776992059/content/design-assets-v3.html"}
+{"type":"screen-added","file":"/Users/manuelarteaga/Documents/myras-nail-academy/.superpowers/brainstorm/77955-1776992059/content/design-assets-v4.html"}
+{"type":"screen-added","file":"/Users/manuelarteaga/Documents/myras-nail-academy/.superpowers/brainstorm/77955-1776992059/content/waiting-2.html"}
+{"type":"server-stopped","reason":"idle timeout"}

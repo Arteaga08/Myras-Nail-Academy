@@ -1,0 +1,193 @@
+<h2>Sección 4 — Decorative Assets</h2>
+<p class="subtitle">Assets flotantes + marco de flor · Reglas de uso y color actualizadas</p>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap');
+  * { box-sizing: border-box; }
+  .ds-label { font-family:'DM Sans',sans-serif; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:#F06292; background:#FFE4EC; padding:4px 10px; border-radius:99px; display:inline-block; margin-bottom:10px; }
+  .asset-grid { display:flex; flex-wrap:wrap; gap:16px; }
+  .asset-card { background:#FFF5F8; border:1px solid #FFE4EC; border-radius:16px; padding:16px; width:180px; display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .asset-preview { width:80px; height:80px; display:flex; align-items:center; justify-content:center; }
+  .asset-name { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:700; color:#18181B; text-align:center; }
+  .asset-meta { font-family:'DM Sans',sans-serif; font-size:10px; color:#71717A; text-align:center; line-height:1.5; }
+  .asset-tag { font-size:9px; font-weight:700; text-transform:uppercase; padding:2px 7px; border-radius:99px; }
+  .tag-rose { background:#FFE4EC; color:#F06292; }
+  .tag-lav  { background:#F0EEF9; color:#8B7EC8; }
+  .tag-nude { background:#EEDFD0; color:#8C6A4A; }
+
+  /* Animations */
+  @keyframes floatA { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-10px) rotate(4deg)} }
+  @keyframes floatB { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-7px) rotate(-3deg)} }
+  @keyframes shimmer { 0%,100%{opacity:.4;transform:scale(1)} 50%{opacity:.9;transform:scale(1.1)} }
+  @keyframes spinSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+  .float-a { animation: floatA 7s ease-in-out infinite; }
+  .float-b { animation: floatB 6s ease-in-out infinite; }
+  .shimmer  { animation: shimmer 4s ease-in-out infinite; }
+  .spin-slow { animation: spinSlow 45s linear infinite; }
+
+  .rule-row { display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; }
+  .rule-dot { width:6px; height:6px; border-radius:50%; background:#F06292; flex-shrink:0; margin-top:4px; }
+  .rule-text { font-family:'DM Sans',sans-serif; font-size:11px; color:#52525B; line-height:1.5; }
+
+  table { width:100%; border-collapse:collapse; font-family:'DM Sans',sans-serif; font-size:11px; }
+  th { text-align:left; padding:6px 10px; background:#F4F4F5; color:#71717A; font-weight:600; font-size:10px; text-transform:uppercase; letter-spacing:.05em; }
+  td { padding:8px 10px; border-bottom:1px solid #F4F4F5; color:#52525B; vertical-align:top; }
+</style>
+
+<!-- ASSET CATALOG -->
+<div class="mockup">
+  <div class="mockup-header">Catálogo de Assets Decorativos</div>
+  <div class="mockup-body" style="padding:20px">
+    <div class="asset-grid">
+
+      <!-- Sparkle -->
+      <div class="asset-card">
+        <div class="asset-preview">
+          <svg class="shimmer" width="48" height="48" viewBox="0 0 256 256" fill="#8B7EC8">
+            <path d="M197.58,129.06l-51.61-19.68L126.3,58a8,8,0,0,0-15,0l-19.67,51.37L40,129.06a8,8,0,0,0,0,14.94l51.61,19.68L111.3,214.05a8,8,0,0,0,15,0l19.67-51.37,51.61-19.68a8,8,0,0,0,0-14.94Z"/>
+          </svg>
+        </div>
+        <div class="asset-name">Sparkle</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center">
+          <span class="asset-tag tag-lav">Lavender-400</span>
+        </div>
+        <div class="asset-meta">shimmerAnim · 4-5s<br/>opacity: 0.35–0.45<br/>size: 28–48px</div>
+      </div>
+
+      <!-- Flower 5 pétalos -->
+      <div class="asset-card">
+        <div class="asset-preview">
+          <svg class="float-a" width="52" height="52" viewBox="0 0 32 32" fill="none">
+            <ellipse cx="16" cy="7" rx="5" ry="8" fill="#FFC2D4"/>
+            <ellipse cx="25" cy="12" rx="5" ry="8" fill="#FFC2D4" transform="rotate(72 25 12)"/>
+            <ellipse cx="21" cy="25" rx="5" ry="8" fill="#FFC2D4" transform="rotate(144 21 25)"/>
+            <ellipse cx="11" cy="25" rx="5" ry="8" fill="#FFC2D4" transform="rotate(216 11 25)"/>
+            <ellipse cx="7" cy="12" rx="5" ry="8" fill="#FFC2D4" transform="rotate(288 7 12)"/>
+            <circle cx="16" cy="16" r="5" fill="#F8A5C2"/>
+          </svg>
+        </div>
+        <div class="asset-name">Flor 5 Pétalos</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center">
+          <span class="asset-tag tag-rose">Rose-200</span>
+          <span class="asset-tag tag-rose">Rose-400</span>
+        </div>
+        <div class="asset-meta">floatA · 7s<br/>opacity: 0.35–0.45<br/>size: 40–60px</div>
+      </div>
+
+      <!-- Frasco de esmalte -->
+      <div class="asset-card">
+        <div class="asset-preview">
+          <svg class="float-b" width="36" height="56" viewBox="0 0 36 56" fill="none">
+            <rect x="12" y="0" width="12" height="8" rx="3" fill="#D9BFA6"/>
+            <rect x="4" y="10" width="28" height="42" rx="6" fill="#F06292"/>
+          </svg>
+        </div>
+        <div class="asset-name">Frasco Esmalte</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center">
+          <span class="asset-tag tag-rose">Rose-500</span>
+          <span class="asset-tag tag-nude">Nude-300</span>
+        </div>
+        <div class="asset-meta">floatB · 6s<br/>opacity: 0.25–0.35<br/>size: 36–48px</div>
+      </div>
+
+      <!-- Marco flor 8 pétalos -->
+      <div class="asset-card" style="width:200px">
+        <div class="asset-preview" style="width:100px;height:100px">
+          <svg class="spin-slow" viewBox="0 0 200 200" width="100" height="100" fill="none">
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#BDB4E0"/>
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#BDB4E0" transform="rotate(45 100 100)"/>
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#BDB4E0" transform="rotate(90 100 100)"/>
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#BDB4E0" transform="rotate(135 100 100)"/>
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#BDB4E0" transform="rotate(180 100 100)"/>
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#BDB4E0" transform="rotate(225 100 100)"/>
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#BDB4E0" transform="rotate(270 100 100)"/>
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#BDB4E0" transform="rotate(315 100 100)"/>
+            <circle cx="100" cy="100" r="22" fill="#F0EEF9"/>
+          </svg>
+        </div>
+        <div class="asset-name">Marco Flor 8 Pétalos ⭐</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center">
+          <span class="asset-tag tag-lav">Lavender-200</span>
+          <span class="asset-tag tag-lav">Lavender-50</span>
+        </div>
+        <div class="asset-meta">spin 45s linear<br/>+ floatA 8s<br/>opacity: 0.35–0.50<br/>size: 300–500px</div>
+      </div>
+
+      <!-- Flower bullet -->
+      <div class="asset-card">
+        <div class="asset-preview">
+          <svg width="32" height="32" viewBox="0 0 256 256" fill="#F8A5C2">
+            <path d="M232,64a40,40,0,0,0-40-40c-20.65,0-44.51,14.25-63.87,38.14C108.51,38.25,84.65,24,64,24A40,40,0,0,0,24,64c0,20.65,14.25,44.51,38.14,63.87C38.25,147.49,24,171.35,24,192a40,40,0,0,0,40,40c20.65,0,44.51-14.25,63.87-38.14C147.49,217.75,171.35,232,192,232a40,40,0,0,0,40-40c0-20.65-14.25-44.51-38.14-63.87C217.75,108.51,232,84.65,232,64Z"/>
+          </svg>
+        </div>
+        <div class="asset-name">Flower Bullet</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center">
+          <span class="asset-tag tag-rose">Rose-400</span>
+        </div>
+        <div class="asset-meta">Sin animación<br/>Phosphor duotone<br/>size: 22–28px</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- REGLAS DE USO -->
+<div class="mockup" style="margin-top:20px">
+  <div class="mockup-header">Reglas de Uso por Página</div>
+  <div class="mockup-body" style="padding:20px">
+    <table>
+      <thead>
+        <tr>
+          <th>Página</th>
+          <th>Assets permitidos</th>
+          <th>Cantidad máx.</th>
+          <th>Posición</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Landing / Home</strong></td>
+          <td>Sparkle · Flor 5p · Frasco · Marco 8p</td>
+          <td>4–5</td>
+          <td>Esquinas, fuera del contenido</td>
+        </tr>
+        <tr>
+          <td><strong>About / Instructora</strong></td>
+          <td>Sparkle · Flor 5p · Marco 8p</td>
+          <td>3–4</td>
+          <td>Detrás de la foto, esquinas</td>
+        </tr>
+        <tr>
+          <td><strong>Detalle de Curso</strong></td>
+          <td>Sparkle · Flor 5p</td>
+          <td>2–3</td>
+          <td>Solo en hero section</td>
+        </tr>
+        <tr>
+          <td><strong>Login / Register</strong></td>
+          <td>Sparkle · Flor 5p · Frasco</td>
+          <td>3</td>
+          <td>Fondo, z-0, pointer-events-none</td>
+        </tr>
+        <tr>
+          <td><strong>Dashboard / Player</strong></td>
+          <td>Ninguno</td>
+          <td>0</td>
+          <td>Interfaz limpia, sin distracciones</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:16px">
+      <div class="ds-label">Reglas Globales</div>
+      <div class="rule-row"><div class="rule-dot"></div><div class="rule-text">Siempre <strong>pointer-events-none</strong> y <strong>z-0</strong> — nunca bloquean contenido</div></div>
+      <div class="rule-row"><div class="rule-dot"></div><div class="rule-text">Opacity siempre entre <strong>0.25–0.50</strong> — decorativos, nunca protagonistas</div></div>
+      <div class="rule-row"><div class="rule-dot"></div><div class="rule-text">Sparkle cambia de <strong>gold → lavender-400</strong> en toda la app</div></div>
+      <div class="rule-row"><div class="rule-dot"></div><div class="rule-text">Marco 8 pétalos cambia de <strong>rose-200 → lavender-200</strong></div></div>
+      <div class="rule-row"><div class="rule-dot"></div><div class="rule-text"><strong>prefers-reduced-motion</strong>: todos los assets deben respetar la preferencia del usuario</div></div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:20px">¿Los assets y sus reglas se ven bien? ¿Notas que falta alguno?</p>

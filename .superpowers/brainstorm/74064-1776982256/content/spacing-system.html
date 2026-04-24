@@ -1,0 +1,92 @@
+<h2>¿Qué tanto espacio entre secciones?</h2>
+<p class="subtitle">Define el "aire" de la página — qué tan apretado o generoso se siente el diseño</p>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,800&family=DM+Sans:wght@400;500;600&display=swap');
+  .page-sim { background: white; border-radius: 12px; overflow: hidden; font-family: 'DM Sans', sans-serif; }
+  .section-block { border-bottom: 1px solid #F4F4F5; display: flex; flex-direction: column; }
+  .label-bar { background: #F4F4F5; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #A1A1AA; padding: 3px 12px; }
+  .section-title { font-family: 'Fraunces', serif; font-weight: 800; color: #18181B; line-height: 1.08; }
+  .section-body { font-size: 13px; color: #71717A; line-height: 1.5; margin-top: 6px; }
+  .pill-btn { display: inline-block; background: #F06292; color: white; border-radius: 999px; font-weight: 600; font-size: 12px; }
+</style>
+
+<div class="cards">
+
+  <!-- A: Compacto -->
+  <div class="card" data-choice="compact" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#FFF5F8; padding:16px; min-height:220px;">
+      <div class="page-sim">
+        <div class="label-bar">py-12 sección · gap-6 elementos · px-5 contenedor</div>
+        <div class="section-block" style="padding: 20px 16px;">
+          <div class="section-title" style="font-size:20px">Aprende el Arte <em style="color:#F06292">Natural</em></div>
+          <div class="section-body">Profesional con años de experiencia en el mundo de las uñas.</div>
+          <div style="margin-top:10px"><span class="pill-btn" style="padding:6px 16px">Inscríbete</span></div>
+        </div>
+        <div class="section-block" style="padding: 16px 16px;">
+          <div class="section-title" style="font-size:15px">Nuestros <em style="color:#F06292">Cursos</em></div>
+          <div class="section-body">Manicura · Gel · Acrílico · Nail Art</div>
+        </div>
+        <div class="section-block" style="padding: 16px 16px;">
+          <div class="section-title" style="font-size:15px">Sobre <em style="color:#F06292">Myra</em></div>
+          <div class="section-body">Instructora certificada con más de 500 alumnas.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Compacto</h3>
+      <p style="font-size:12px;color:#555;margin:4px 0 0">Secciones: py-12 (48px). Elementos: gap-4/6. Más información visible, menos "aire".</p>
+    </div>
+  </div>
+
+  <!-- B: Generoso -->
+  <div class="card" data-choice="generous" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#FFF5F8; padding:16px; min-height:220px;">
+      <div class="page-sim">
+        <div class="label-bar">py-24 sección · gap-12 elementos · px-6 contenedor</div>
+        <div class="section-block" style="padding: 32px 20px;">
+          <div class="section-title" style="font-size:22px">Aprende el Arte <em style="color:#F06292">Natural</em></div>
+          <div class="section-body" style="margin-top:10px">Profesional con años de experiencia en el mundo de las uñas.</div>
+          <div style="margin-top:18px"><span class="pill-btn" style="padding:9px 22px">Inscríbete Ahora</span></div>
+        </div>
+        <div class="section-block" style="padding: 28px 20px;">
+          <div class="section-title" style="font-size:17px">Nuestros <em style="color:#F06292">Cursos</em></div>
+          <div class="section-body" style="margin-top:8px">Manicura · Gel · Acrílico · Nail Art</div>
+        </div>
+        <div class="section-block" style="padding: 28px 20px;">
+          <div class="section-title" style="font-size:17px">Sobre <em style="color:#F06292">Myra</em></div>
+          <div class="section-body" style="margin-top:8px">Instructora certificada con más de 500 alumnas.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Generoso</h3>
+      <p style="font-size:12px;color:#555;margin:4px 0 0">Secciones: py-24 (96px). Elementos: gap-10/12. Más "aire", se siente premium y moderno.</p>
+    </div>
+  </div>
+
+  <!-- C: Muy Amplio -->
+  <div class="card" data-choice="airy" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#FFF5F8; padding:16px; min-height:220px;">
+      <div class="page-sim">
+        <div class="label-bar">py-32 sección · gap-16 elementos · px-8 contenedor</div>
+        <div class="section-block" style="padding: 40px 24px;">
+          <div class="section-title" style="font-size:24px">Aprende el Arte <em style="color:#F06292">Natural</em></div>
+          <div class="section-body" style="margin-top:12px;font-size:14px">Profesional con años de experiencia en el mundo de las uñas.</div>
+          <div style="margin-top:24px"><span class="pill-btn" style="padding:10px 26px;font-size:13px">Inscríbete Ahora →</span></div>
+        </div>
+        <div class="section-block" style="padding: 36px 24px;">
+          <div class="section-title" style="font-size:19px">Nuestros <em style="color:#F06292">Cursos</em></div>
+          <div class="section-body" style="margin-top:10px">Manicura · Gel · Acrílico · Nail Art</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Muy Amplio / Airy</h3>
+      <p style="font-size:12px;color:#555;margin:4px 0 0">Secciones: py-32 (128px). Elementos: gap-16. Estilo editorial de lujo, cada sección respira mucho.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:24px">Mi recomendación: <strong>B (Generoso)</strong> — el punto perfecto entre funcional y premium. Ya es el estilo que más se usa en el proyecto actualmente.</p>

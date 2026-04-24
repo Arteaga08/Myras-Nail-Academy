@@ -1,0 +1,70 @@
+<h2>¿Cómo usamos los colores en los textos?</h2>
+<p class="subtitle">Define cómo Rose, Lavender y Nude colorean los títulos y énfasis</p>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@400;500;600&display=swap');
+  .demo { background: white; border-radius: 16px; padding: 24px 28px; }
+  .h1  { font-family: 'Fraunces', serif; font-weight: 800; font-size: 36px; line-height: 1.08; color: #18181B; margin: 0 0 10px; }
+  .h2  { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; line-height: 1.15; color: #18181B; margin: 0 0 6px; }
+  .body{ font-family: 'DM Sans', sans-serif; font-size: 15px; color: #52525B; line-height: 1.6; margin: 0 0 4px; }
+  .cap { font-family: 'DM Sans', sans-serif; font-size: 12px; color: #A1A1AA; margin: 0; }
+  .badge { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 3px 9px; border-radius: 99px; display: inline-block; margin-bottom: 10px; }
+  hr { border: none; border-top: 1px solid #F4F4F5; margin: 12px 0; }
+</style>
+
+<div class="cards">
+
+  <div class="card" data-choice="rose-only" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#FFF5F8; padding:20px; min-height:200px;">
+      <div class="demo">
+        <span class="badge" style="background:#FFE4EC;color:#F06292">Solo Rose para énfasis</span>
+        <div class="h1">Aprende el Arte <em style="color:#F06292;font-style:italic">Natural</em></div>
+        <div class="h2">Su Legado <span style="color:#F06292;font-style:italic">Profesional</span></div>
+        <hr/>
+        <div class="body">Forma parte de nuestra <strong style="color:#3D051C">academia de alto nivel</strong> y transforma tu carrera.</div>
+        <div class="cap">Más de 500 alumnas certificadas</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Solo Rose</h3>
+      <p style="font-size:12px;color:#555;margin:4px 0 0">Una sola palabra clave por título en rose. Simple, consistente, fácil de aplicar.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="rose-lavender" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#FFF5F8; padding:20px; min-height:200px;">
+      <div class="demo">
+        <span class="badge" style="background:#FFE4EC;color:#F06292">Rose + Lavender según sección</span>
+        <div class="h1">Aprende el Arte <em style="color:#F06292;font-style:italic">Natural</em></div>
+        <div class="h2">Nuestros <span style="color:#8B7EC8;font-style:italic">Valores</span></div>
+        <hr/>
+        <div class="body">Forma parte de nuestra <strong style="color:#3D051C">academia de alto nivel</strong> y transforma tu carrera.</div>
+        <div class="cap">Más de 500 alumnas certificadas</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Rose + Lavender</h3>
+      <p style="font-size:12px;color:#555;margin:4px 0 0">Rose para secciones de venta/hero. Lavender para secciones informativas/valores. Más variedad.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="full-palette" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#FFF5F8; padding:20px; min-height:200px;">
+      <div class="demo">
+        <span class="badge" style="background:#FFE4EC;color:#F06292">Rose + Lavender + Nude oscuro</span>
+        <div class="h1">Aprende el Arte <em style="color:#F06292;font-style:italic">Natural</em></div>
+        <div class="h2">Nuestros <span style="color:#8B7EC8;font-style:italic">Valores</span></div>
+        <hr/>
+        <div class="body">Forma parte de nuestra <strong style="color:#8C6A4A">academia de alto nivel</strong> y transforma tu carrera.</div>
+        <div class="cap">Más de 500 alumnas certificadas</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Paleta Completa</h3>
+      <p style="font-size:12px;color:#555;margin:4px 0 0">Rose en H1, Lavender en H2, Nude oscuro en énfasis de body. Usa toda la paleta con reglas claras.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:24px">Mi recomendación: <strong>B (Rose + Lavender)</strong> — da variedad visual sin volverse caótico. Rose para impacto, Lavender para calidez informativa.</p>

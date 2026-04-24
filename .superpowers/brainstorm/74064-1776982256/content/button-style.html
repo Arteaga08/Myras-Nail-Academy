@@ -1,0 +1,101 @@
+<h2>¿Cómo deben verse los botones?</h2>
+<p class="subtitle">Elige el estilo que mejor representa a Myra's Nail Academy</p>
+
+<style>
+  .btn-preview { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 8px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; cursor: default; transition: all 0.2s; border: none; }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* A — Pill suave */
+  .pill-primary   { background: #F06292; color: white; padding: 10px 24px; border-radius: 999px; box-shadow: 0 4px 14px rgba(240,98,146,0.35); }
+  .pill-secondary { background: transparent; color: #F06292; padding: 9px 23px; border-radius: 999px; border: 1.5px solid #F06292; }
+  .pill-accent    { background: #8B7EC8; color: white; padding: 10px 24px; border-radius: 999px; box-shadow: 0 4px 14px rgba(139,126,200,0.35); }
+  .pill-ghost     { background: transparent; color: #71717A; padding: 9px 23px; border-radius: 999px; border: 1.5px solid #D4D4D8; }
+
+  /* B — Rounded moderno */
+  .rnd-primary    { background: #F06292; color: white; padding: 10px 24px; border-radius: 12px; box-shadow: 0 4px 14px rgba(240,98,146,0.35); }
+  .rnd-secondary  { background: transparent; color: #F06292; padding: 9px 23px; border-radius: 12px; border: 1.5px solid #F06292; }
+  .rnd-accent     { background: #8B7EC8; color: white; padding: 10px 24px; border-radius: 12px; box-shadow: 0 4px 14px rgba(139,126,200,0.35); }
+  .rnd-ghost      { background: transparent; color: #71717A; padding: 9px 23px; border-radius: 12px; border: 1.5px solid #D4D4D8; }
+
+  /* C — Mixto: CTA pill, acción rounded */
+  .mix-primary    { background: #F06292; color: white; padding: 10px 28px; border-radius: 999px; box-shadow: 0 4px 14px rgba(240,98,146,0.35); font-size: 15px; }
+  .mix-secondary  { background: transparent; color: #F06292; padding: 9px 23px; border-radius: 12px; border: 1.5px solid #F06292; }
+  .mix-accent     { background: #8B7EC8; color: white; padding: 10px 24px; border-radius: 12px; box-shadow: 0 4px 14px rgba(139,126,200,0.35); }
+  .mix-ghost      { background: #F4F4F5; color: #52525B; padding: 9px 23px; border-radius: 8px; }
+
+  /* Sizes row */
+  .size-row { display: flex; align-items: center; gap: 10px; margin: 6px 0; flex-wrap: wrap; }
+</style>
+
+<div class="cards">
+
+  <div class="card" data-choice="pill" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#FFF5F8; padding: 24px 20px; min-height:140px;">
+      <div class="btn-preview">
+        <button class="btn pill-primary">Inscríbete Ahora</button>
+        <button class="btn pill-secondary">Ver Curso</button>
+      </div>
+      <div class="btn-preview">
+        <button class="btn pill-accent">Lavender CTA</button>
+        <button class="btn pill-ghost">Cancelar</button>
+      </div>
+      <div class="size-row" style="margin-top:12px; font-size:11px; color:#888">
+        <button class="btn pill-primary" style="padding:6px 16px;font-size:12px">SM</button>
+        <button class="btn pill-primary">MD</button>
+        <button class="btn pill-primary" style="padding:13px 32px;font-size:16px">LG</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Todo Pill (Redondeado)</h3>
+      <p style="font-size:12px;color:#555;margin:4px 0 0">Todos los botones con border-radius total. Suave, femenino, muy usado en beauty/wellness.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="rounded" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#FFF5F8; padding: 24px 20px; min-height:140px;">
+      <div class="btn-preview">
+        <button class="btn rnd-primary">Inscríbete Ahora</button>
+        <button class="btn rnd-secondary">Ver Curso</button>
+      </div>
+      <div class="btn-preview">
+        <button class="btn rnd-accent">Lavender CTA</button>
+        <button class="btn rnd-ghost">Cancelar</button>
+      </div>
+      <div class="size-row" style="margin-top:12px;">
+        <button class="btn rnd-primary" style="padding:6px 16px;font-size:12px;border-radius:8px">SM</button>
+        <button class="btn rnd-primary">MD</button>
+        <button class="btn rnd-primary" style="padding:13px 32px;font-size:16px;border-radius:14px">LG</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Rounded Moderno</h3>
+      <p style="font-size:12px;color:#555;margin:4px 0 0">Border-radius de 8–14px. Más cuadrado, moderno y profesional. Bueno para plataformas educativas.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="mixed" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#FFF5F8; padding: 24px 20px; min-height:140px;">
+      <div class="btn-preview">
+        <button class="btn mix-primary">Inscríbete Ahora ✦</button>
+        <button class="btn mix-secondary">Ver Curso</button>
+      </div>
+      <div class="btn-preview">
+        <button class="btn mix-accent">Lavender CTA</button>
+        <button class="btn mix-ghost">Cancelar</button>
+      </div>
+      <div class="size-row" style="margin-top:12px;">
+        <button class="btn mix-primary" style="padding:6px 20px;font-size:12px">SM</button>
+        <button class="btn mix-primary">MD</button>
+        <button class="btn mix-primary" style="padding:14px 36px;font-size:16px">LG</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Mixto (CTA Pill + Acción Rounded)</h3>
+      <p style="font-size:12px;color:#555;margin:4px 0 0">CTAs principales en pill. Botones secundarios/acciones en rounded. Lo mejor de los dos mundos.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:24px">Mi recomendación: <strong>C (Mixto)</strong> — el CTA principal en pill llama la atención, y los botones de acción en rounded se ven más limpios y funcionales.</p>

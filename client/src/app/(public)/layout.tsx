@@ -1,7 +1,7 @@
 import { LandingNavbar } from "@/app/_components/LandingNavbar";
 import { LandingFooter } from "@/app/_components/LandingFooter";
 
-export default function CoursesLayout({
+export default function PublicLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ export default function CoursesLayout({
   return (
     <>
       <LandingNavbar />
-      <div className="pt-24">{children}</div>
+      {children}
       <LandingFooter />
     </>
   );

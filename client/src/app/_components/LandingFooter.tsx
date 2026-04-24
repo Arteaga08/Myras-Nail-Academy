@@ -147,11 +147,17 @@ export function LandingFooter() {
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             {/* Legal Links */}
             <div className="flex flex-wrap justify-center gap-4 text-xs tracking-wider text-rose-200 sm:justify-start">
-              <Link href="#" className="rounded outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-500">
+              <Link
+                href="#"
+                className="rounded outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-500"
+              >
                 POLÍTICA DE PRIVACIDAD
               </Link>
               <span className="hidden opacity-50 sm:inline">|</span>
-              <Link href="#" className="rounded outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-500">
+              <Link
+                href="#"
+                className="rounded outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-500"
+              >
                 TÉRMINOS DE SERVICIO
               </Link>
             </div>
@@ -189,7 +195,7 @@ export function LandingFooter() {
               derechos reservados.
             </p>
             <p className="font-medium uppercase tracking-widest text-rose-100">
-              Site by <span className="font-bold text-white">Vidix Studio</span>
+              site by <span className="font-bold text-white">Vidix Studio</span>
             </p>
           </div>
         </div>

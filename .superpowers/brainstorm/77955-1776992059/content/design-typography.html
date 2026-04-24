@@ -1,0 +1,139 @@
+<h2>Sección 2 — Escala Tipográfica</h2>
+<p class="subtitle">Fraunces (display) para títulos · DM Sans (sans) para cuerpo · Estilo Editorial</p>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:wght@400;500;600;700&display=swap');
+  .type-row { display: flex; align-items: baseline; gap: 16px; padding: 14px 0; border-bottom: 1px solid #F4F4F5; }
+  .type-meta { min-width: 140px; flex-shrink: 0; }
+  .type-token { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #8B7EC8; background: #F0EEF9; padding: 2px 8px; border-radius: 99px; display: inline-block; margin-bottom: 4px; }
+  .type-specs { font-size: 10px; color: #A1A1AA; font-family: monospace; }
+  .type-sample { flex: 1; color: #18181B; line-height: 1.08; }
+  .type-sample.body-sample { line-height: 1.65; color: #52525B; }
+  .type-sample.caption-sample { line-height: 1.5; color: #A1A1AA; }
+  .section-header { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #F06292; background: #FFE4EC; padding: 6px 12px; border-radius: 6px; margin: 20px 0 4px; display: inline-block; }
+</style>
+
+<div class="mockup">
+  <div class="mockup-header">Type Scale — Editorial System</div>
+  <div class="mockup-body" style="padding: 8px 24px 24px">
+
+    <div class="section-header">Display / Fraunces</div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-token">display-2xl</div>
+        <div class="type-specs">88px / weight 900<br/>tracking: -0.03em</div>
+      </div>
+      <div class="type-sample" style="font-family:'Fraunces',serif;font-size:52px;font-weight:900;letter-spacing:-0.03em">
+        Arte <em style="color:#F06292">Natural</em>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-token">display-xl</div>
+        <div class="type-specs">72px / weight 800<br/>tracking: -0.02em</div>
+      </div>
+      <div class="type-sample" style="font-family:'Fraunces',serif;font-size:42px;font-weight:800;letter-spacing:-0.02em">
+        Aprende el <em style="color:#F06292">Arte</em>
+      </div>
+    </div>
+
+    <div class="section-header">Headings / Fraunces</div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-token">h1</div>
+        <div class="type-specs">56px / weight 800<br/>tracking: -0.02em</div>
+      </div>
+      <div class="type-sample" style="font-family:'Fraunces',serif;font-size:34px;font-weight:800;letter-spacing:-0.02em">
+        Conoce a <em style="color:#F06292">Myra</em>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-token">h2</div>
+        <div class="type-specs">40px / weight 700<br/>tracking: -0.01em</div>
+      </div>
+      <div class="type-sample" style="font-family:'Fraunces',serif;font-size:26px;font-weight:700;letter-spacing:-0.01em">
+        Nuestros <em style="color:#F06292">Cursos</em>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-token">h3</div>
+        <div class="type-specs">28px / weight 700</div>
+      </div>
+      <div class="type-sample" style="font-family:'Fraunces',serif;font-size:20px;font-weight:700">
+        Manicura <em style="color:#F06292">Profesional</em>
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-token">h4</div>
+        <div class="type-specs">22px / weight 700</div>
+      </div>
+      <div class="type-sample" style="font-family:'Fraunces',serif;font-size:17px;font-weight:700">
+        Módulo 1 — Introducción
+      </div>
+    </div>
+
+    <div class="section-header">Body / DM Sans</div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-token">body-lg</div>
+        <div class="type-specs">18px / weight 400<br/>leading: 1.7</div>
+      </div>
+      <div class="type-sample body-sample" style="font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.7">
+        Aprende con Myra las técnicas más avanzadas del mundo de las uñas. Cursos diseñados para llevarte de cero a profesional.
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-token">body-md</div>
+        <div class="type-specs">16px / weight 400<br/>leading: 1.65</div>
+      </div>
+      <div class="type-sample body-sample" style="font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.65">
+        Texto secundario de descripción. Usado en cards, descripciones de módulos y listas de contenido.
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-token">body-sm</div>
+        <div class="type-specs">14px / weight 400<br/>leading: 1.5</div>
+      </div>
+      <div class="type-sample caption-sample" style="font-family:'DM Sans',sans-serif;font-size:12px;line-height:1.5">
+        Texto pequeño, metadata, fechas, duración del curso.
+      </div>
+    </div>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-token">caption</div>
+        <div class="type-specs">12px / weight 500<br/>tracking: +0.02em</div>
+      </div>
+      <div class="type-sample caption-sample" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:#A1A1AA">
+        ETIQUETA · BADGE · CATEGORÍA
+      </div>
+    </div>
+
+    <div class="type-row" style="border:none">
+      <div class="type-meta">
+        <div class="type-token">overline</div>
+        <div class="type-specs">11px / weight 700<br/>tracking: +0.08em</div>
+      </div>
+      <div class="type-sample" style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F06292">
+        NUEVO CURSO · DESTACADO · OFERTA
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:20px">¿Esta escala tipográfica se ve bien? ¿Quieres ajustar algún tamaño antes de continuar?</p>
