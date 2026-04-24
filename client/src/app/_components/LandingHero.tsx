@@ -260,7 +260,7 @@ export function LandingHero({ imageUrl }: LandingHeroProps = {}) {
             <div className="mt-6 flex w-full flex-col items-start justify-start gap-4 sm:mt-8 sm:flex-row">
               <Link
                 href="/cursos#course-sales"
-                className="group flex h-14 w-full max-w-65 items-center justify-center gap-2 rounded-full bg-rose-500 px-8 text-[15px] font-bold text-white shadow-lg shadow-rose-500/25 outline-none transition-all duration-200 hover:-translate-y-0.5 hover:bg-rose-600 hover:shadow-xl hover:shadow-rose-500/30 active:translate-y-0 active:scale-[0.98] active:bg-rose-700 focus-visible:ring-2 focus-visible:ring-rose-300 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-100 disabled:pointer-events-none disabled:bg-rose-300 disabled:text-white/80 disabled:shadow-none sm:w-auto sm:max-w-none sm:text-base"
+                className="group flex h-14 w-full max-w-65 items-center justify-center gap-2 rounded-full bg-rose-500 px-8 text-[15px] font-bold text-white shadow-lg outline-none transition-all duration-200 hover:-translate-y-0.5 hover:bg-rose-600 hover:shadow-xl active:translate-y-0 active:scale-[0.98] active:bg-rose-700 focus-visible:ring-2 focus-visible:ring-rose-300 focus-visible:ring-offset-2 focus-visible:ring-offset-rose-100 disabled:pointer-events-none disabled:bg-rose-300 disabled:text-white/80 disabled:shadow-none sm:w-auto sm:max-w-none sm:text-base"
               >
                 VER LOS CURSOS
                 <ArrowRight

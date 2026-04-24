@@ -58,7 +58,7 @@ export function PortfolioShowcase() {
         {/* 3. Añadimos hidden md:flex (no flechas en celular) y quitamos focus:opacity-100 */}
         <button
           onClick={() => scroll("left")}
-          className="absolute left-2 top-1/2 z-20 hidden md:flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-rose-400 text-white opacity-0 shadow-lg shadow-rose-500/20 outline-none transition-all duration-300 hover:scale-110 hover:bg-rose-500 active:scale-95 active:bg-rose-600 focus-visible:scale-105 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-rose-300 focus-visible:ring-offset-2 group-hover:opacity-100 disabled:pointer-events-none disabled:scale-100 disabled:bg-rose-200 disabled:text-white/60 lg:left-8"
+          className="absolute left-2 top-1/2 z-20 hidden md:flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-rose-400 text-white opacity-0 shadow-lg shadow-neutral-900/10 outline-none transition-all duration-300 hover:scale-110 hover:bg-rose-500 active:scale-95 active:bg-rose-600 focus-visible:scale-105 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-rose-300 focus-visible:ring-offset-2 group-hover:opacity-100 disabled:pointer-events-none disabled:scale-100 disabled:bg-rose-200 disabled:text-white/60 lg:left-8"
           aria-label="Anterior imagen"
         >
           <CaretLeft size={28} weight="bold" />
@@ -98,7 +98,7 @@ export function PortfolioShowcase() {
         {/* BOTÓN DERECHA */}
         <button
           onClick={() => scroll("right")}
-          className="absolute right-2 top-1/2 z-20 hidden md:flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-rose-400 text-white opacity-0 shadow-lg shadow-rose-500/20 outline-none transition-all duration-300 hover:scale-110 hover:bg-rose-500 active:scale-95 active:bg-rose-600 focus-visible:scale-105 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-rose-300 focus-visible:ring-offset-2 group-hover:opacity-100 disabled:pointer-events-none disabled:scale-100 disabled:bg-rose-200 disabled:text-white/60 lg:right-8"
+          className="absolute right-2 top-1/2 z-20 hidden md:flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-rose-400 text-white opacity-0 shadow-lg shadow-neutral-900/10 outline-none transition-all duration-300 hover:scale-110 hover:bg-rose-500 active:scale-95 active:bg-rose-600 focus-visible:scale-105 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-rose-300 focus-visible:ring-offset-2 group-hover:opacity-100 disabled:pointer-events-none disabled:scale-100 disabled:bg-rose-200 disabled:text-white/60 lg:right-8"
           aria-label="Siguiente imagen"
         >
           <CaretRight size={28} weight="bold" />

@@ -10,7 +10,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
   return (
     <ToastProvider>
-      <div className="flex h-screen overflow-hidden">
+      <div className="flex h-dvh overflow-hidden">
         <Sidebar
           isMobileOpen={isMobileNavOpen}
           onClose={() => setIsMobileNavOpen(false)}

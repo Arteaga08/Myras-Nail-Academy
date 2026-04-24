@@ -8,7 +8,7 @@ import {
 export function CourseCertificate() {
   return (
     // CAMBIO: Ahora es un div con estilo de tarjeta masiva para el grid
-    <div className="relative overflow-hidden rounded-[2.5rem] bg-white p-8 shadow-xl shadow-rose-900/5 ring-1 ring-rose-100/50 sm:p-12 lg:rounded-[3.5rem] lg:p-16">
+    <div className="relative overflow-hidden rounded-[2.5rem] bg-white p-8 shadow-xl ring-1 ring-rose-100/50 sm:p-12 lg:rounded-[3.5rem] lg:p-16">
       {/* Asset de Estrella de fondo (Como en tu captura) */}
       <div className="pointer-events-none absolute -right-10 -bottom-10 opacity-10 lg:-right-16 lg:-bottom-16">
         <Sparkle size={300} weight="fill" className="text-nude-200" />
