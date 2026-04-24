@@ -14,8 +14,21 @@ export function CourseSalesSection() {
   if (isLoading) {
     return (
       <section id="course-sales" className="bg-rose-100 px-6 py-20 lg:py-32">
-        <div className="mx-auto flex max-w-7xl items-center justify-center">
-          <div className="h-10 w-10 animate-spin rounded-full border-2 border-rose-500 border-t-transparent" />
+        <div className="mx-auto max-w-7xl">
+          <div className="animate-pulse rounded-[3rem] bg-white p-8 sm:p-14 lg:p-20">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-24">
+              <div className="flex items-center justify-center">
+                <div className="h-80 w-80 rounded-full bg-rose-100/60 sm:h-96 sm:w-96" />
+              </div>
+              <div className="flex flex-col gap-6">
+                <div className="h-8 w-2/3 rounded-lg bg-rose-100/60" />
+                <div className="h-8 w-full rounded-lg bg-rose-100/60" />
+                <div className="h-5 w-full rounded bg-rose-100/40" />
+                <div className="h-5 w-4/5 rounded bg-rose-100/40" />
+                <div className="mt-4 h-14 w-full rounded-full bg-rose-200/60" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     );
@@ -29,7 +42,7 @@ export function CourseSalesSection() {
     <section id="course-sales" className="bg-rose-100 px-6 py-20 lg:py-32">
       <div className="mx-auto max-w-7xl">
         {/* LA GRAN TARJETA DE VENTA */}
-        <div className="relative overflow-hidden rounded-[3rem] bg-white p-8 shadow-2xl shadow-rose-500/15 ring-1 ring-lavender-200/60 sm:p-14 lg:p-20">
+        <div className="relative overflow-hidden rounded-[3rem] bg-white p-8 shadow-2xl ring-1 ring-lavender-200/60 sm:p-14 lg:p-20">
           {/* Efectos de Glow de fondo */}
           <div className="absolute -left-32 -top-32 h-125 w-125 rounded-full bg-rose-50/80 opacity-60 blur-3xl"></div>
           <div className="absolute -bottom-40 -right-40 h-150 w-150 rounded-full bg-rose-100/30 opacity-40 blur-3xl"></div>
@@ -212,7 +225,7 @@ export function CourseSalesSection() {
               )}
 
               {/* MÓDULO DE PRECIO REDISEÑADO (Vertical y Premium) */}
-              <div className="mt-10 flex flex-col items-center gap-6 rounded-3xl bg-linear-to-br from-white to-rose-50/50 p-8 shadow-xl shadow-rose-900/5 ring-1 ring-rose-100/50 sm:mt-12 sm:items-start lg:p-10">
+              <div className="mt-10 flex flex-col items-center gap-6 rounded-3xl bg-linear-to-br from-white to-rose-50/50 p-8 shadow-xl ring-1 ring-rose-100/50 sm:mt-12 sm:items-start lg:p-10">
                 {/* Etiqueta de valor para romper la monotonía */}
                 <div className="rounded-full bg-rose-100/80 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-rose-600 ring-1 ring-rose-200">
                   Pago Único • Acceso de por vida
@@ -237,7 +250,7 @@ export function CourseSalesSection() {
                 <Link
                   href={`/cursos/${course.slug}`}
                   // Botón ahora tiene 'w-full' asegurado, texto más grande y respira perfectamente
-                  className="group mt-2 flex h-14 w-full items-center justify-center gap-3 rounded-full bg-rose-500 px-8 text-sm font-bold tracking-wide text-white shadow-lg shadow-rose-500/25 outline-none transition-all duration-200 hover:-translate-y-1 hover:bg-rose-600 hover:shadow-xl hover:shadow-rose-500/30 active:translate-y-0 active:scale-[0.98] active:bg-rose-700 lg:h-16 lg:text-base"
+                  className="group mt-2 flex h-14 w-full items-center justify-center gap-3 rounded-full bg-rose-500 px-8 text-sm font-bold tracking-wide text-white shadow-lg outline-none transition-all duration-200 hover:-translate-y-1 hover:bg-rose-600 hover:shadow-xl active:translate-y-0 active:scale-[0.98] active:bg-rose-700 lg:h-16 lg:text-base"
                 >
                   INICIAR MI TRANSFORMACIÓN
                   <ArrowRight
