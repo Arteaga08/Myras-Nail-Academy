@@ -6,7 +6,7 @@ interface WelcomeHeroProps {
 
 export function WelcomeHero({ firstName }: WelcomeHeroProps) {
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-rose-500 to-rose-400 px-6 py-8 shadow-lg sm:px-12 sm:py-10">
+    <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-rose-500 to-rose-400 px-6 py-8 shadow-lg sm:px-12 sm:py-10">
       {/* Orbes ambientales */}
       <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />

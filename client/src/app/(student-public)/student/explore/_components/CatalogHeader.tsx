@@ -1,6 +1,7 @@
 'use client'
 
 import { MagnifyingGlassIcon as MagnifyingGlass } from '@phosphor-icons/react/ssr'
+import { Button } from '@/components/ui/Button'
 import { NailSparkle } from '@/components/ui/DecorativeAssets'
 import type { Course } from '@/hooks/useExploreCourses'
 
@@ -40,32 +41,24 @@ export function CatalogHeader({
 
       {categories.length > 0 && (
         <div className="flex flex-wrap items-center gap-2">
-          <button
+          <Button
             type="button"
+            variant={selectedCategoryId === null ? 'primary' : 'secondary'}
+            size="md"
             onClick={() => onCategoryChange(null)}
-            className={[
-              'rounded-full border px-4 py-2 text-sm font-medium transition-colors',
-              selectedCategoryId === null
-                ? 'border-rose-500 bg-rose-500 text-white'
-                : 'border-rose-200 bg-white text-rose-600 hover:bg-rose-50',
-            ].join(' ')}
           >
             Todos
-          </button>
+          </Button>
           {categories.map((cat) => (
-            <button
+            <Button
               key={cat.id}
               type="button"
+              variant={selectedCategoryId === cat.id ? 'primary' : 'secondary'}
+              size="md"
               onClick={() => onCategoryChange(cat.id)}
-              className={[
-                'rounded-full border px-4 py-2 text-sm font-medium transition-colors',
-                selectedCategoryId === cat.id
-                  ? 'border-rose-500 bg-rose-500 text-white'
-                  : 'border-rose-200 bg-white text-rose-600 hover:bg-rose-50',
-              ].join(' ')}
             >
               {cat.name}
-            </button>
+            </Button>
           ))}
         </div>
       )}
@@ -80,7 +73,7 @@ export function CatalogHeader({
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder="Buscar curso..."
-          className="w-full rounded-full border border-neutral-200 bg-white py-2 pl-9 pr-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-100"
+          className="w-full rounded-full border border-neutral-200 bg-white py-2 pl-9 pr-3 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500"
         />
       </div>
     </div>

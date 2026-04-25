@@ -71,24 +71,28 @@ export function CoursePlayerTopBar({
           </button>
         )}
         {/* Botón Anterior */}
-        <button
+        <Button
           onClick={onPrev}
           disabled={!hasPrev}
-          className="hidden sm:inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-lg bg-white/10 px-4 text-sm font-medium text-white transition-colors hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-40"
+          variant="ghost"
+          size="sm"
+          className="hidden sm:inline-flex border-white/20 text-white hover:bg-white/20 hover:text-white active:bg-white/30"
         >
           <ArrowLeft size={16} />
           Clase anterior
-        </button>
+        </Button>
 
         {/* Botón Siguiente */}
-        <button
+        <Button
           onClick={onNext}
           disabled={!hasNext}
-          className="inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-lg bg-white px-4 text-sm font-bold text-rose-600 shadow-sm transition-colors hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-40"
+          variant="secondary"
+          size="sm"
+          className="bg-white hover:bg-rose-50 active:bg-rose-100"
         >
           Siguiente clase
           <ArrowRight size={16} />
-        </button>
+        </Button>
       </div>
     </div>
   );

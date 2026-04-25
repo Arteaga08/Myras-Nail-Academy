@@ -1,30 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
 import { ArrowLeftIcon as ArrowLeft } from "@phosphor-icons/react/ssr";
-import { useStudentAuth } from "@/hooks/useStudentAuth";
 import type { CourseWithLessons } from "@/hooks/useCourseBySlug";
 import Link from "next/link";
-
-const PurchaseModal = dynamic(
-  () =>
-    import("@/app/(student-public)/student/explore/_components/PurchaseModal").then(
-      (m) => m.PurchaseModal,
-    ),
-  { ssr: false },
-);
 
 interface CourseHeroProps {
   course: CourseWithLessons;
 }
 
 export function CourseHero({ course }: CourseHeroProps) {
-  const { token } = useStudentAuth();
-  const router = useRouter();
-  const [showModal, setShowModal] = useState(false);
-
   return (
     <>
       <section className="relative flex min-h-[65vh] w-full items-center overflow-hidden bg-neutral-950 px-6 py-32 lg:px-16 xl:px-24">
@@ -293,13 +277,6 @@ export function CourseHero({ course }: CourseHeroProps) {
         </div>
       </section>
 
-      {showModal && (
-        <PurchaseModal
-          course={course}
-          onClose={() => setShowModal(false)}
-          onSuccess={() => router.push("/student/my-courses")}
-        />
-      )}
     </>
   );
 }

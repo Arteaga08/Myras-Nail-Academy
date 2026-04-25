@@ -15,8 +15,6 @@ import { NailAccent, NailSparkle } from "@/components/ui/DecorativeAssets";
 import { CourseCatalogGrid } from "./_components/CourseCatalogGrid";
 import { CatalogHeader } from "./_components/CatalogHeader";
 import { WhyMyrasSection } from "./_components/WhyMyrasSection";
-import { PurchaseModal } from "./_components/PurchaseModal";
-import type { Course } from "@/hooks/useExploreCourses";
 
 export default function ExplorePage() {
   const { token } = useStudentAuth();
@@ -26,7 +24,6 @@ export default function ExplorePage() {
   const router = useRouter();
   const buyIntent = searchParams.get("buy");
 
-  const [autoOpenCourse, setAutoOpenCourse] = useState<Course | null>(null);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
     null,
   );
@@ -37,8 +34,7 @@ export default function ExplorePage() {
 
     const course = courses.find((c) => c._id === buyIntent);
     if (course && !enrolledIds.has(course._id)) {
-      setAutoOpenCourse(course);
-      router.replace("/student/explore", { scroll: false });
+      router.replace(`/checkout/${course._id}`);
     }
   }, [buyIntent, token, isLoading, courses, enrolledIds, router]);
 
@@ -148,17 +144,6 @@ export default function ExplorePage() {
         {/* ¿POR QUÉ MYRA'S? */}
         <WhyMyrasSection />
       </div>
-
-      {autoOpenCourse && (
-        <PurchaseModal
-          course={autoOpenCourse}
-          onClose={() => setAutoOpenCourse(null)}
-          onSuccess={() => {
-            refreshEnrollments();
-            setAutoOpenCourse(null);
-          }}
-        />
-      )}
     </>
   );
 }

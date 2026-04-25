@@ -60,13 +60,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               error ? `${inputId}-error` : helperText ? `${inputId}-helper` : undefined
             }
             className={[
-              'w-full rounded-lg border bg-white px-3.5 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400',
+              'w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400',
               'transition-colors duration-150',
               'focus:outline-none focus:ring-2 focus:ring-offset-1',
               'disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:text-neutral-400',
               error
-                ? 'border-error-500 focus:border-error-500 focus:ring-error-500/20'
-                : 'border-neutral-300 focus:border-rose-500 focus:ring-rose-500/20',
+                ? 'border-error-500 focus:border-error-500 focus:ring-error-500'
+                : 'border-neutral-300 focus:border-rose-500 focus:ring-rose-500',
               showPasswordToggle ? 'pr-10' : '',
               className,
             ]

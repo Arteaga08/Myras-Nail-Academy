@@ -1,4 +1,4 @@
-function required(name: string, value: string | undefined): string {
+  function required(name: string, value: string | undefined): string {
   if (!value) {
     throw new Error(
       `Missing required env var: ${name}. Define it in client/.env.local before starting the app.`
@@ -20,4 +20,4 @@ export const CLOUDINARY_CLOUD_NAME = required(
 export const CLOUDINARY_UPLOAD_PRESET = required(
   'NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET',
   process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
-)
+ )

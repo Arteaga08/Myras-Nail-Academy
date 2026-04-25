@@ -31,11 +31,16 @@ const paymentSchema = new mongoose.Schema(
       ref: 'Course',
       required: [true, 'Course reference is required'],
     },
+    webhookEventId: {
+      type: String,
+      sparse: true,
+    },
   },
   { timestamps: true }
 );
 
 paymentSchema.index({ userId: 1, status: 1 });
+paymentSchema.index({ webhookEventId: 1 }, { sparse: true });
 
 const Payment = mongoose.model('Payment', paymentSchema);
 

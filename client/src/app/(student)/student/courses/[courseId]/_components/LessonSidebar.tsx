@@ -47,7 +47,7 @@ export function LessonSidebar({
       </div>
 
       {/* PROGRESS: Ligero ajuste de espaciado y fondo blanco puro para destacar */}
-      <div className="border-b border-neutral-200/80 px-5 py-4 bg-white shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] z-10">
+      <div className="border-b border-neutral-200/80 px-5 py-4 bg-white shadow-sm z-10">
         <div className="mb-2 flex items-center justify-between">
           <span className="text-xs font-medium text-neutral-500">
             Progreso del Curso
@@ -97,7 +97,7 @@ export function LessonSidebar({
                     className="text-rose-500"
                   />
                 ) : (
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-neutral-200 text-[11px] font-bold text-neutral-500">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-neutral-200 text-xs font-bold text-neutral-500">
                     {lesson.order}
                   </span>
                 )}

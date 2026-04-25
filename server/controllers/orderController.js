@@ -4,6 +4,7 @@ import Course from '../models/Course.js';
 import Payment from '../models/Payment.js';
 import Enrollment from '../models/Enrollment.js';
 import getStripe from '../config/stripe.js';
+import { reconcilePayment, RECONCILE_OUTCOME } from '../services/paymentReconciliationService.js';
 
 const REUSABLE_INTENT_STATUSES = [
   'requires_payment_method',
@@ -116,4 +117,31 @@ const getOrderById = asyncHandler(async (req, res) => {
   res.status(200).json({ status: 'success', data: payment });
 });
 
-export { createOrder, getOrderById };
+// @desc    Confirm/reconcile a payment against Stripe (client-side fallback when webhooks fail)
+// @route   POST /api/orders/:paymentId/confirm
+// @access  Protected — student must own the payment
+const confirmOrder = asyncHandler(async (req, res) => {
+  const { paymentId } = req.params;
+
+  const payment = await Payment.findOne({ _id: paymentId, userId: req.user._id });
+  if (!payment) {
+    res.status(404);
+    throw new Error('Payment not found');
+  }
+
+  const result = await reconcilePayment(paymentId);
+
+  const httpStatus = result.outcome === RECONCILE_OUTCOME.IN_FLIGHT ? 409 : 200;
+
+  res.status(httpStatus).json({
+    status: 'success',
+    data: {
+      outcome: result.outcome,
+      intentStatus: result.intentStatus,
+      enrollmentCreated: result.enrollmentCreated ?? false,
+      payment: result.payment,
+    },
+  });
+});
+
+export { createOrder, getOrderById, confirmOrder };
